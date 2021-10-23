@@ -23,4 +23,4 @@ Won't haves (stuff that I plan on not touching, but could easily touch further d
 
 Additional links:
 
-Dev Blog on Wordpress: https://trello.com/b/KZhuVVHY/adventurer-comp3000
+Dev Blog on Wordpress: https://wordpress.com/posts/adventurerdevblogs.wordpress.com
