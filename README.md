@@ -19,3 +19,8 @@ Could haves:
 
 Won't haves (stuff that I plan on not touching, but could easily touch further down the line if I have additional time after my deliverables for the project are sorted): 
 - Any crafting systems. This project is large enough in scope already without adding any systems to make weapons, armour, potions or other in-game items that could benefit the player in any way.
+
+
+Additional links:
+
+Dev Blog on Wordpress: https://trello.com/b/KZhuVVHY/adventurer-comp3000
