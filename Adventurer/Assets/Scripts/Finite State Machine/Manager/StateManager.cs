@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //This will be useful as the FSM will be working with the in-game UI elements (i.e. menus, HUD, etc)
 
-public enum GameState { Default, MainMenu, Play, Pause }
+public enum GameState { Default, MainMenu, Play, Pause, Quit }
 public class StateManager : MonoBehaviour
 {
     private IBaseState IActiveState;
@@ -12,7 +12,10 @@ public class StateManager : MonoBehaviour
 
     [Header("UI - To Be Added")]
     public GameObject mainMenuUI;
-    [Space(10)] 
+    public GameObject pauseMenuUI; 
+    public GameObject gameplayHUD;
+    [Space(10)]  
+    public Canvas uiCanvas;
     public GameObject mainCam;
     public GameState gameState;
     [Space(10)] 
@@ -48,14 +51,50 @@ public class StateManager : MonoBehaviour
     private void Update() 
     {
         mainCam = GameObject.FindWithTag("MainCamera");
+        uiCanvas.worldCamera = mainCam.GetComponent<Camera>();
 
         if(IActiveState != null)
         {
             IActiveState.StateUpdate();
         }
 
+        if(Input.GetButtonDown("Pause"))
+        {
+            if(gameState == GameState.Play)
+            {
+                Time.timeScale = 0;
+                gameState = GameState.Pause;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
+            else if(gameState == GameState.Pause)
+            {
+                Time.timeScale = 1;
+                gameState = GameState.Play;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+
         switch(gameState)
         {
+            case GameState.MainMenu:
+                mainMenuUI.SetActive(true);
+                pauseMenuUI.SetActive(false);
+                gameplayHUD.SetActive(false);
+                break;
+
+            case GameState.Pause:
+                pauseMenuUI.SetActive(true);
+                break;
+
+            case GameState.Play:
+                mainMenuUI.SetActive(false);
+                pauseMenuUI.SetActive(false);
+                gameplayHUD.SetActive(true);
+                break;
+
             default:
                 break;
         }
