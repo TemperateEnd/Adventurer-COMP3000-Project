@@ -15,10 +15,11 @@ public class PlayState : IBaseState
 
         if(scene.name != "PlayState")
         {
-            SceneManager.LoadScene("PlayScene");
+            SceneManager.LoadScene("PlayState");
         }
 
-        stateManager.gameState = GameState.MainMenu;
+        stateManager.gameState = GameState.Play;
+        Debug.Log("Now in PlayState");
     }
 
     public void StateUpdate()
