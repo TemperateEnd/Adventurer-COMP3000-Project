@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //This will be useful as the FSM will be working with the in-game UI elements (i.e. menus, HUD, etc)
 
-public enum GameState { Default, MainMenu, Play, Pause, Quit }
+public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Quit }
 public class StateManager : MonoBehaviour
 {
     private IBaseState IActiveState;
@@ -14,6 +14,7 @@ public class StateManager : MonoBehaviour
     public GameObject mainMenuUI;
     public GameObject pauseMenuUI; 
     public GameObject gameplayHUD;
+    public GameObject characterCreationUI;
     [Space(10)]  
     public Canvas uiCanvas;
     public GameObject mainCam;
