@@ -11,7 +11,7 @@ public class mainMenuScript : MonoBehaviour
         switch(btnFunction)
         {
             case "StartGame":
-                StateManager.InstanceRef.SwitchState(new PlayState(StateManager.InstanceRef));
+                StateManager.InstanceRef.gameState = GameState.CharacterCreation;
                 break;
 
             case "ExitGame":

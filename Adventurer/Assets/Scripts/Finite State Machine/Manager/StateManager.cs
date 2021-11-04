@@ -21,7 +21,7 @@ public class StateManager : MonoBehaviour
     public GameState gameState;
     [Space(10)] 
     [Header("Player Variables")]
-    public float testVariable;
+    public BaseCharacter currentCharacter;
 
     /*Spaces and Headers are going to be used to better categorise variables that will be used for this script,
     such as UI, playerVariables (i.e. currency, skill levels, skill points, etc)*/
