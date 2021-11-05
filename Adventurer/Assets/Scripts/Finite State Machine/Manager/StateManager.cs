@@ -82,6 +82,14 @@ public class StateManager : MonoBehaviour
         {
             case GameState.MainMenu:
                 mainMenuUI.SetActive(true);
+                characterCreationUI.SetActive(false);
+                pauseMenuUI.SetActive(false);
+                gameplayHUD.SetActive(false);
+                break;
+
+            case GameState.CharacterCreation:
+                mainMenuUI.SetActive(false);
+                characterCreationUI.SetActive(true);
                 pauseMenuUI.SetActive(false);
                 gameplayHUD.SetActive(false);
                 break;
@@ -92,6 +100,7 @@ public class StateManager : MonoBehaviour
 
             case GameState.Play:
                 mainMenuUI.SetActive(false);
+                characterCreationUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
                 gameplayHUD.SetActive(true);
                 break;

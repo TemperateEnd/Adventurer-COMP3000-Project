@@ -19,30 +19,28 @@ public class characterCreationMenu : MonoBehaviour
 
     [Header("UI")]
     public GameObject characterNameField;
+    [Header("TextMeshPro")]
+    public TextMeshProUGUI pointsText;
     public TextMeshProUGUI strengthText;
     public TextMeshProUGUI intelligenceText;
     public TextMeshProUGUI charismaText;
     public TextMeshProUGUI enduranceText;
     public TextMeshProUGUI wisdomText;
     public TextMeshProUGUI dexterityText;
+    [Header("Buttons - Increment Stats")]
     public Button addStatStrength;
     public Button addStatIntelligence;
     public Button addStatCharisma;
     public Button addStatEndurance;
     public Button addStatWisdom;
     public Button addStatDexterity;
+    [Header("Buttons - Decrement Stats")]
     public Button subtractStatStrength;
     public Button subtractStatIntelligence;
     public Button subtractStatCharisma;
     public Button subtractStatEndurance;
     public Button subtractStatWisdom;
     public Button subtractStatDexterity;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -56,6 +54,8 @@ public class characterCreationMenu : MonoBehaviour
         wisdomText.SetText("Wisdom: " + tempWisdom);
         dexterityText.SetText("Dexterity: " + tempDexterity);
 
+        pointsText.SetText("Available Points: " + availablePoints);
+
         if(availablePoints <= 0)
         {
             addStatStrength.GetComponent<Button>().interactable = false;
@@ -64,6 +64,16 @@ public class characterCreationMenu : MonoBehaviour
             addStatEndurance.GetComponent<Button>().interactable = false;
             addStatWisdom.GetComponent<Button>().interactable = false;
             addStatDexterity.GetComponent<Button>().interactable = false;
+        }
+
+        else if (availablePoints > 0)
+        {
+            addStatStrength.GetComponent<Button>().interactable = true;
+            addStatIntelligence.GetComponent<Button>().interactable = true;
+            addStatCharisma.GetComponent<Button>().interactable = true;
+            addStatEndurance.GetComponent<Button>().interactable = true;
+            addStatWisdom.GetComponent<Button>().interactable = true;
+            addStatDexterity.GetComponent<Button>().interactable = true;
         }
     }
 
@@ -78,7 +88,7 @@ public class characterCreationMenu : MonoBehaviour
                     tempStrength--;
                 }
 
-                else if (tempStrength <= 0)
+                else if (tempStrength == 0)
                 {
                     subtractStatStrength.GetComponent<Button>().interactable = false;
                 }
@@ -89,7 +99,7 @@ public class characterCreationMenu : MonoBehaviour
                     tempIntelligence--;
                 }
 
-                else if (tempIntelligence <= 0)
+                else if (tempIntelligence == 0)
                 {
                     subtractStatIntelligence.GetComponent<Button>().interactable = false;
                 }
@@ -100,7 +110,7 @@ public class characterCreationMenu : MonoBehaviour
                     tempCharisma--;
                 }
 
-                else if (tempCharisma <= 0)
+                else if (tempCharisma == 0)
                 {
                     subtractStatCharisma.GetComponent<Button>().interactable = false;
                 }
@@ -111,7 +121,7 @@ public class characterCreationMenu : MonoBehaviour
                     tempEndurance--;
                 }
 
-                else if (tempEndurance <= 0)
+                else if (tempEndurance == 0)
                 {
                     subtractStatEndurance.GetComponent<Button>().interactable = false;
                 }
@@ -122,7 +132,7 @@ public class characterCreationMenu : MonoBehaviour
                     tempWisdom--;
                 }
 
-                else if (tempWisdom <= 0)
+                else if (tempWisdom == 0)
                 {
                     subtractStatWisdom.GetComponent<Button>().interactable = false;
                 }
@@ -133,7 +143,7 @@ public class characterCreationMenu : MonoBehaviour
                     tempDexterity--;
                 }
 
-                else if (tempDexterity <= 0)
+                else if (tempDexterity == 0)
                 {
                     subtractStatDexterity.GetComponent<Button>().interactable = false;
                 }
@@ -150,21 +160,50 @@ public class characterCreationMenu : MonoBehaviour
             {
                 case "Strength":
                     tempStrength++;
+                    if(tempStrength > 0)
+                    {
+                        subtractStatStrength.GetComponent<Button>().interactable = true;
+                    }
                     break;
                 case "Intelligence":
                     tempIntelligence++;
+
+                    if(tempIntelligence > 0)
+                    {
+                        subtractStatIntelligence.GetComponent<Button>().interactable = true;
+                    }
                     break;
                 case "Charisma":
                     tempCharisma++;
+
+                    if(tempCharisma > 0)
+                    {
+                        subtractStatCharisma.GetComponent<Button>().interactable = true;
+                    }
                     break;
                 case "Endurance":
                     tempEndurance++;
+
+                    if(tempEndurance > 0)
+                    {
+                        subtractStatEndurance.GetComponent<Button>().interactable = true;
+                    }
                     break;
                 case "Wisdom":
                     tempWisdom++;
+
+                    if(tempWisdom > 0)
+                    {
+                        subtractStatWisdom.GetComponent<Button>().interactable = true;
+                    }
                     break;
                 case "Dexterity":
                     tempDexterity++;
+
+                    if(tempDexterity > 0)
+                    {
+                        subtractStatDexterity.GetComponent<Button>().interactable = true;
+                    }
                     break;
             }
             availablePoints--;
