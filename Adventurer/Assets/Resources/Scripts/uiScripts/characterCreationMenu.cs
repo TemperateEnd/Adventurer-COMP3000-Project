@@ -212,7 +212,6 @@ public class characterCreationMenu : MonoBehaviour
 
     public void ChooseClass(string classChoice) //Resets chosenClass before setting the new class;
     {
-        chosenClass = null;
         chosenClass = Resources.Load<CharacterClass>("ScriptableObjects/" + classChoice);
     }
 
@@ -236,11 +235,16 @@ public class characterCreationMenu : MonoBehaviour
             tempCharisma+=1;
         }
 
+        StateManager.InstanceRef.characeterName = tempCharacterName;
+        StateManager.InstanceRef.characterLevel = 1;
+        StateManager.InstanceRef.characterClass = chosenClass.ToString();
 
-        BaseCharacter newCharacter = new BaseCharacter(tempCharacterName, chosenClass, tempStrength, tempIntelligence, 
-                                                        tempCharisma, tempEndurance, tempWisdom, tempDexterity);
-
-        StateManager.InstanceRef.currentCharacter = newCharacter;
+        StateManager.InstanceRef.characterStrength = tempStrength;
+        StateManager.InstanceRef.characterIntelligence = tempIntelligence;
+        StateManager.InstanceRef.characterCharisma = tempCharisma;
+        StateManager.InstanceRef.characterEndurance = tempEndurance;
+        StateManager.InstanceRef.characterWisdom = tempWisdom;
+        StateManager.InstanceRef.characterDexterity = tempDexterity;
 
         StateManager.InstanceRef.SwitchState(new PlayState(StateManager.InstanceRef));
     }

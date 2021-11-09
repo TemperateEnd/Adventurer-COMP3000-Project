@@ -21,7 +21,18 @@ public class StateManager : MonoBehaviour
     public GameState gameState;
     [Space(10)] 
     [Header("Player Variables")]
-    public BaseCharacter currentCharacter;
+    [Space(5)]
+    [Header("Character Details")]
+    public string characeterName;
+    public byte characterLevel;
+    public string characterClass;
+    public byte characterStrength;
+    public byte characterIntelligence;
+    public byte characterCharisma;
+    public byte characterEndurance;
+    public byte characterWisdom;
+    public byte characterDexterity;
+   
 
     /*Spaces and Headers are going to be used to better categorise variables that will be used for this script,
     such as UI, playerVariables (i.e. currency, skill levels, skill points, etc)*/
