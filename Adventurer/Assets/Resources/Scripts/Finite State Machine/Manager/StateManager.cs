@@ -25,7 +25,7 @@ public class StateManager : MonoBehaviour
     [Header("Character Details")]
     public string characeterName;
     public byte characterLevel;
-    public string characterClass;
+    public CharacterClass characterClass;
     public byte characterStrength;
     public byte characterIntelligence;
     public byte characterCharisma;

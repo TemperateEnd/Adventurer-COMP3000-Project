@@ -237,7 +237,7 @@ public class characterCreationMenu : MonoBehaviour
 
         StateManager.InstanceRef.characeterName = tempCharacterName;
         StateManager.InstanceRef.characterLevel = 1;
-        StateManager.InstanceRef.characterClass = chosenClass.ToString();
+        StateManager.InstanceRef.characterClass = chosenClass;
 
         StateManager.InstanceRef.characterStrength = tempStrength;
         StateManager.InstanceRef.characterIntelligence = tempIntelligence;
