@@ -32,6 +32,8 @@ public class StateManager : MonoBehaviour
     public byte characterEndurance;
     public byte characterWisdom;
     public byte characterDexterity;
+    [Header("Skill Levels")]
+    public Skill[] skills;
    
 
     /*Spaces and Headers are going to be used to better categorise variables that will be used for this script,

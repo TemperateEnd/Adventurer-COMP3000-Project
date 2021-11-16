@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebafa60214057f49af52e9460a5a6d3, type: 3}
-  m_Name: Rogue
+  m_Script: {fileID: 11500000, guid: 12d5997e7ee598d4aab78c7544b7669b, type: 3}
+  m_Name: Deception
   m_EditorClassIdentifier: 
-  className: Rogue
+  skillName: Deception
+  skillLevel: 0
+  skillXP: 0

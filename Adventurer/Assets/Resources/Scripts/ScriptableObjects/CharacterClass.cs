@@ -7,6 +7,5 @@ using UnityEngine;
 public class CharacterClass : ScriptableObject
 {
     public string className;
-
-    //To add Skills array
+    public Skill[] specialistSkills;
 }
