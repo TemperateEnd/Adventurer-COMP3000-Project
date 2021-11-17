@@ -15,6 +15,10 @@ public class StateManager : MonoBehaviour
     public GameObject pauseMenuUI; 
     public GameObject gameplayHUD;
     public GameObject characterCreationUI;
+    public GameObject characterDetailsUI;
+    [Space(10)]  
+    [Header("PlayState UI")]
+    public bool toggleCharDetails;
     [Space(10)]  
     public Canvas uiCanvas;
     public GameObject mainCam;
@@ -23,7 +27,7 @@ public class StateManager : MonoBehaviour
     [Header("Player Variables")]
     [Space(5)]
     [Header("Character Details")]
-    public string characeterName;
+    public string characterName;
     public byte characterLevel;
     public CharacterClass characterClass;
     public byte characterStrength;
@@ -34,6 +38,7 @@ public class StateManager : MonoBehaviour
     public byte characterDexterity;
     [Header("Skill Levels")]
     public Skill[] skills;
+    public int testVariable; //Will be using this dummy variable for testing the SkillIncreaseFunction I have attached to the Skill ScriptableObject
    
 
     /*Spaces and Headers are going to be used to better categorise variables that will be used for this script,
@@ -116,6 +121,66 @@ public class StateManager : MonoBehaviour
                 characterCreationUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
                 gameplayHUD.SetActive(true);
+
+                if(Input.GetKeyDown(KeyCode.C))
+                {
+                    toggleCharDetails = !toggleCharDetails;
+
+                    if (toggleCharDetails)
+                    {
+                        Time.timeScale = 0;
+                    }
+
+                    else
+                    {
+                        Time.timeScale = 1;
+                    }
+                    characterDetailsUI.SetActive(toggleCharDetails);
+                }
+
+                testVariable = int.Parse(Input.inputString);
+
+                switch(testVariable)
+                {
+                    case 1:
+                        skills[0].SkillIncrease();
+                        break;
+
+                    case 2:
+                        skills[1].SkillIncrease();
+                        break;
+
+                    case 3:
+                        skills[2].SkillIncrease();
+                        break;
+
+                    case 4:
+                        skills[3].SkillIncrease();
+                        break;
+
+                    case 5:
+                        skills[4].SkillIncrease();
+                        break;
+
+                    case 6:
+                        skills[5].SkillIncrease();
+                        break;
+
+                    case 7:
+                        skills[6].SkillIncrease();
+                        break;
+
+                    case 8:
+                        skills[7].SkillIncrease();
+                        break;
+                    
+                    case 9:
+                        skills[8].SkillIncrease();
+                        break;
+                    
+                    default:
+                        break;
+                }
                 break;
 
             default:

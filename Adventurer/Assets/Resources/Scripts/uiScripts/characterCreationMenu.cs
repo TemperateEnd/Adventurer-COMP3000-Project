@@ -212,7 +212,7 @@ public class characterCreationMenu : MonoBehaviour
 
     public void ChooseClass(string classChoice) //Resets chosenClass before setting the new class;
     {
-        chosenClass = Resources.Load<CharacterClass>("ScriptableObjects/" + classChoice);
+        chosenClass = Resources.Load<CharacterClass>("ScriptableObjects/Classes/" + classChoice);
     }
 
     public void CreateCharacter()
@@ -235,7 +235,7 @@ public class characterCreationMenu : MonoBehaviour
             tempCharisma+=1;
         }
 
-        StateManager.InstanceRef.characeterName = tempCharacterName;
+        StateManager.InstanceRef.characterName = tempCharacterName;
         StateManager.InstanceRef.characterLevel = 1;
         StateManager.InstanceRef.characterClass = chosenClass;
 
