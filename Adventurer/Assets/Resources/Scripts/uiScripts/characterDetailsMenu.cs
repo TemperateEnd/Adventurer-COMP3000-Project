@@ -8,6 +8,7 @@ public class characterDetailsMenu : MonoBehaviour
 {
     public TextMeshProUGUI charName;
     public TextMeshProUGUI charClass;
+    public TextMeshProUGUI charLevelUpCount;
 
     public GameObject[] skillLevels;
 
@@ -15,6 +16,7 @@ public class characterDetailsMenu : MonoBehaviour
     {
         charName.SetText("Name: " + StateManager.InstanceRef.characterName);
         charClass.SetText("Level " + StateManager.InstanceRef.characterLevel + " " + StateManager.InstanceRef.characterClass.className);
+        charLevelUpCount.SetText(StateManager.InstanceRef.levelUpManager.levelUpCount + "/" + StateManager.InstanceRef.levelUpManager.levelUpNumber + " skill increases before level increase");
 
         for (int i = 0; i < skillLevels.Length; i++)
         {

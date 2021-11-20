@@ -9,6 +9,7 @@ public class StateManager : MonoBehaviour
     private IBaseState IActiveState;
     public static StateManager InstanceRef = null;
     private static StateManager instanceRef;
+    public levelUpScript levelUpManager;
 
     [Header("UI - To Be Added")]
     public GameObject mainMenuUI;
@@ -65,6 +66,11 @@ public class StateManager : MonoBehaviour
     void Start() 
     {
         IActiveState = new StartState(this);
+
+        for(int i = 0; i < skills.Length; i++)
+        {
+            skills[i].skillLevel = 0; //Have it be 0 by default
+        }
     }
 
     private void Update() 
@@ -143,39 +149,39 @@ public class StateManager : MonoBehaviour
                 switch(testVariable)
                 {
                     case 1:
-                        skills[0].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[0], 50.0f);
                         break;
 
                     case 2:
-                        skills[1].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[1], 10.0f);
                         break;
 
                     case 3:
-                        skills[2].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[2], 110.0f); //Deliberately going over xp limit to see what happens
                         break;
 
                     case 4:
-                        skills[3].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[3], 100.0f);
                         break;
 
                     case 5:
-                        skills[4].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[4], 100.0f);
                         break;
 
                     case 6:
-                        skills[5].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[5], 100.0f);
                         break;
 
                     case 7:
-                        skills[6].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[6], 100.0f);
                         break;
 
                     case 8:
-                        skills[7].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[7], 100.0f);
                         break;
                     
                     case 9:
-                        skills[8].SkillIncrease();
+                        levelUpManager.SkillAddXP(skills[8], 100.0f);
                         break;
                     
                     default:

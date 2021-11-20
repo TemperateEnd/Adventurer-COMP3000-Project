@@ -8,10 +8,4 @@ public class Skill : ScriptableObject
     public string skillName;
     [Range(0, 100)]public byte skillLevel;
     [Range(0, 100)]public float skillXP;
-
-    public void SkillIncrease()
-    {
-        skillLevel++;
-        skillXP = 0;
-    }
 }
