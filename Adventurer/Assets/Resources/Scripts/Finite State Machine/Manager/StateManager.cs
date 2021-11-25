@@ -17,6 +17,7 @@ public class StateManager : MonoBehaviour
     public GameObject gameplayHUD;
     public GameObject characterCreationUI;
     public GameObject characterDetailsUI;
+    public GameObject dialogueUI;
     [Space(10)]  
     [Header("PlayState UI")]
     public bool toggleCharDetails;
@@ -39,7 +40,6 @@ public class StateManager : MonoBehaviour
     public byte characterDexterity;
     [Header("Skill Levels")]
     public Skill[] skills;
-    public int testVariable; //Will be using this dummy variable for testing the SkillIncreaseFunction I have attached to the Skill ScriptableObject
    
 
     /*Spaces and Headers are going to be used to better categorise variables that will be used for this script,
@@ -142,50 +142,6 @@ public class StateManager : MonoBehaviour
                         Time.timeScale = 1;
                     }
                     characterDetailsUI.SetActive(toggleCharDetails);
-                }
-
-                testVariable = int.Parse(Input.inputString);
-
-                switch(testVariable)
-                {
-                    case 1:
-                        levelUpManager.SkillAddXP(skills[0], 50.0f);
-                        break;
-
-                    case 2:
-                        levelUpManager.SkillAddXP(skills[1], 10.0f);
-                        break;
-
-                    case 3:
-                        levelUpManager.SkillAddXP(skills[2], 110.0f); //Deliberately going over xp limit to see what happens
-                        break;
-
-                    case 4:
-                        levelUpManager.SkillAddXP(skills[3], 100.0f);
-                        break;
-
-                    case 5:
-                        levelUpManager.SkillAddXP(skills[4], 100.0f);
-                        break;
-
-                    case 6:
-                        levelUpManager.SkillAddXP(skills[5], 100.0f);
-                        break;
-
-                    case 7:
-                        levelUpManager.SkillAddXP(skills[6], 100.0f);
-                        break;
-
-                    case 8:
-                        levelUpManager.SkillAddXP(skills[7], 100.0f);
-                        break;
-                    
-                    case 9:
-                        levelUpManager.SkillAddXP(skills[8], 100.0f);
-                        break;
-                    
-                    default:
-                        break;
                 }
                 break;
 
