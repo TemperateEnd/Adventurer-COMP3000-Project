@@ -7,4 +7,5 @@ public class DialogueOption : ScriptableObject
 {
     public string optionText;
     public DialogueLine responseToOption;
+    public bool endsDialogue;
 }

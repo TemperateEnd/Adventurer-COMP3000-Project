@@ -7,27 +7,20 @@ public class dialogueUIScript : MonoBehaviour
 {
     public DialogueLine currentLine;
     public DialogueTree currentTree;
-    public string[] dialogueRecord;
     [Header("UI Components")]
-    public GameObject dialogueRecordUI;
     public GameObject[] dialogueResponseButtons;
     public TextMeshProUGUI dialogueText;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentLine = currentTree.rootDialogue;
+        ChangeLine(currentTree.rootDialogue);
     }
 
     // Update is called once per frame
     void Update()
     {
-        dialogueText.SetText(currentTree.npcName + ": " + currentLine);
-
-        for(int i = 0; i < currentLine.availableOptions.Length;i++)
-        {
-            dialogueResponseButtons[i].SetActive(true);
-        }
+        dialogueText.SetText(currentTree.npcName + ": " + currentLine.dialogueText);
     }
 
     public void EndDialogue()
@@ -38,13 +31,28 @@ public class dialogueUIScript : MonoBehaviour
         }
         currentLine = null;
         currentTree = null;
-        Array.Clear(dialogueRecord, 0, dialogueRecord.Length);
 
         this.gameObject.SetActive(false);
     }
 
     public void DialogueOptionSelected(DialogueOption optionSelected)
     {
-        currentLine = optionSelected.responseToOption;
+        ChangeLine(optionSelected.responseToOption);
+
+        if(optionSelected.endsDialogue)
+        {
+            EndDialogue();
+        }
+    }
+
+    public void ChangeLine(DialogueLine nextLine)
+    {
+        currentLine = nextLine;
+
+        for(int i = 0; i < currentLine.availableOptions.Length;i++)
+        {
+            dialogueResponseButtons[i].SetActive(true);
+            dialogueResponseButtons[i].GetComponent<dialogueButtonScript>().optionRepresented = currentLine.availableOptions[i];
+        }
     }
 }

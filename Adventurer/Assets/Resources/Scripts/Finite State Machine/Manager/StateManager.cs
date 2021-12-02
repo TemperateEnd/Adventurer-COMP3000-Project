@@ -19,8 +19,11 @@ public class StateManager : MonoBehaviour
     public GameObject characterDetailsUI;
     public GameObject dialogueUI;
     [Space(10)]  
-    [Header("PlayState UI")]
+    [Header("PlayState elements")]
+    public DialogueTree currentNPC;
     public bool toggleCharDetails;
+    public bool toggleDialogueActive;
+    public bool withinDialogueRange;
     [Space(10)]  
     public Canvas uiCanvas;
     public GameObject mainCam;
@@ -143,6 +146,26 @@ public class StateManager : MonoBehaviour
                     }
                     characterDetailsUI.SetActive(toggleCharDetails);
                 }
+
+
+                if(Input.GetButtonDown("Interact") && withinDialogueRange)
+                {
+                    toggleDialogueActive = !toggleDialogueActive;
+
+                    if(toggleDialogueActive)
+                    {
+                        Time.timeScale = 0;
+                        dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
+                    }
+
+                    else
+                    {
+                        Time.timeScale = 1;
+                        dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
+                    }
+                    dialogueUI.SetActive(toggleDialogueActive);
+                }
+
                 break;
 
             default:

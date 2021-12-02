@@ -11,11 +11,16 @@ public class dialogueButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogueButtonText = this.gameObject.GetComponent<TextMeshProUGUI>();
+    }
+
+    void Update() 
+    {
         dialogueButtonText.SetText(optionRepresented.optionText);
     }
 
     // Update is called once per frame
-    void OptionSelected()
+    public void OptionSelected()
     {
         this.gameObject.GetComponentInParent<dialogueUIScript>().DialogueOptionSelected(optionRepresented);
     }
