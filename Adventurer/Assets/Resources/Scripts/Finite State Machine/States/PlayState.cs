@@ -19,7 +19,6 @@ public class PlayState : IBaseState
         }
 
         stateManager.gameState = GameState.Play;
-        Debug.Log("Now in PlayState");
     }
 
     public void StateUpdate()

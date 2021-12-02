@@ -11,8 +11,8 @@ public class dialogueUIScript : MonoBehaviour
     public GameObject[] dialogueResponseButtons;
     public TextMeshProUGUI dialogueText;
 
-    // Start is called before the first frame update
-    void Start()
+    //Displays root dialogue whenever script is enabled
+    void OnEnable()
     {
         ChangeLine(currentTree.rootDialogue);
     }
@@ -32,16 +32,23 @@ public class dialogueUIScript : MonoBehaviour
         currentLine = null;
         currentTree = null;
 
+        StateManager.InstanceRef.toggleDialogueActive = false;
         this.gameObject.SetActive(false);
     }
 
     public void DialogueOptionSelected(DialogueOption optionSelected)
     {
-        ChangeLine(optionSelected.responseToOption);
-
-        if(optionSelected.endsDialogue)
+        //if endDialogue bool is true and there is no line attached to dialogue option, end dialogue
+        if(optionSelected.endsDialogue && (optionSelected.responseToOption == null))
         {
+            Debug.Log("Ending dialogue");
             EndDialogue();
+        }
+
+        //if option has a response, continue dialogue
+        else
+        {
+            ChangeLine(optionSelected.responseToOption);
         }
     }
 
@@ -53,6 +60,11 @@ public class dialogueUIScript : MonoBehaviour
         {
             dialogueResponseButtons[i].SetActive(true);
             dialogueResponseButtons[i].GetComponent<dialogueButtonScript>().optionRepresented = currentLine.availableOptions[i];
+
+            if(i > currentLine.availableOptions.Length)
+            {
+                dialogueResponseButtons[i].SetActive(false);
+            }
         }
     }
 }

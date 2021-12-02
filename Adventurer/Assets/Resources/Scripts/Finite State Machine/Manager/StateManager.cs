@@ -150,21 +150,25 @@ public class StateManager : MonoBehaviour
 
                 if(Input.GetButtonDown("Interact") && withinDialogueRange)
                 {
-                    toggleDialogueActive = !toggleDialogueActive;
+                    toggleDialogueActive = true;
+                }
 
                     if(toggleDialogueActive)
                     {
                         Time.timeScale = 0;
+                        Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = true;
                         dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
                     }
 
                     else
                     {
                         Time.timeScale = 1;
+                        Cursor.lockState = CursorLockMode.Locked;
+                        Cursor.visible = false;
                         dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
                     }
                     dialogueUI.SetActive(toggleDialogueActive);
-                }
 
                 break;
 
