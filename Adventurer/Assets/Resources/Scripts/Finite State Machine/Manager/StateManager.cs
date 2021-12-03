@@ -6,6 +6,7 @@ using UnityEngine.UI; //This will be useful as the FSM will be working with the 
 public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Quit }
 public class StateManager : MonoBehaviour
 {
+    public float timeScale;
     private IBaseState IActiveState;
     public static StateManager InstanceRef = null;
     private static StateManager instanceRef;
@@ -18,6 +19,7 @@ public class StateManager : MonoBehaviour
     public GameObject characterCreationUI;
     public GameObject characterDetailsUI;
     public GameObject dialogueUI;
+    public GameObject playerUI;
     [Space(10)]  
     [Header("PlayState elements")]
     public DialogueTree currentNPC;
@@ -78,8 +80,10 @@ public class StateManager : MonoBehaviour
 
     private void Update() 
     {
+        timeScale = Time.timeScale;
         mainCam = GameObject.FindWithTag("MainCamera");
         uiCanvas.worldCamera = mainCam.GetComponent<Camera>();
+        uiCanvas.planeDistance = 0.5f;
 
         if(IActiveState != null)
         {
@@ -90,7 +94,7 @@ public class StateManager : MonoBehaviour
         {
             if(gameState == GameState.Play)
             {
-                Time.timeScale = 0;
+                PauseGame();
                 gameState = GameState.Pause;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
@@ -98,7 +102,7 @@ public class StateManager : MonoBehaviour
 
             else if(gameState == GameState.Pause)
             {
-                Time.timeScale = 1;
+                ResumeGame();
                 gameState = GameState.Play;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -112,6 +116,7 @@ public class StateManager : MonoBehaviour
                 characterCreationUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
                 gameplayHUD.SetActive(false);
+                playerUI.SetActive(false);
                 break;
 
             case GameState.CharacterCreation:
@@ -119,6 +124,7 @@ public class StateManager : MonoBehaviour
                 characterCreationUI.SetActive(true);
                 pauseMenuUI.SetActive(false);
                 gameplayHUD.SetActive(false);
+                playerUI.SetActive(false);
                 break;
 
             case GameState.Pause:
@@ -130,6 +136,7 @@ public class StateManager : MonoBehaviour
                 characterCreationUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
                 gameplayHUD.SetActive(true);
+                playerUI.SetActive(true);
 
                 if(Input.GetKeyDown(KeyCode.C))
                 {
@@ -137,12 +144,12 @@ public class StateManager : MonoBehaviour
 
                     if (toggleCharDetails)
                     {
-                        Time.timeScale = 0;
+                        PauseGame();
                     }
 
                     else
                     {
-                        Time.timeScale = 1;
+                        ResumeGame();
                     }
                     characterDetailsUI.SetActive(toggleCharDetails);
                 }
@@ -153,22 +160,23 @@ public class StateManager : MonoBehaviour
                     toggleDialogueActive = true;
                 }
 
-                    if(toggleDialogueActive)
-                    {
-                        Time.timeScale = 0;
-                        Cursor.lockState = CursorLockMode.Confined;
-                        Cursor.visible = true;
-                        dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
-                    }
+                if(toggleDialogueActive)
+                {
+                    PauseGame();
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
+                }
 
-                    else
-                    {
-                        Time.timeScale = 1;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        Cursor.visible = false;
-                        dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
-                    }
-                    dialogueUI.SetActive(toggleDialogueActive);
+                else
+                {
+                    ResumeGame();
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
+                }
+
+                dialogueUI.SetActive(toggleDialogueActive);
 
                 break;
 
@@ -181,5 +189,15 @@ public class StateManager : MonoBehaviour
     public void SwitchState(IBaseState nextState)
     {
         IActiveState = nextState;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 }

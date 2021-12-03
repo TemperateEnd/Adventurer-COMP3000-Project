@@ -8,6 +8,7 @@ public class movementScript : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
     public bool canMove = true;
+    public bool playerRunning = false;
 
     [Space(5)]
     [Header("Rotation")]
@@ -27,15 +28,28 @@ public class movementScript : MonoBehaviour
         //Locking cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        StateManager.InstanceRef.playerUI.GetComponent<playerUIScript>().player = this.gameObject;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        bool playerRunning = Input.GetButtonDown("Sprint");
+        playerRunning = Input.GetButtonDown("Sprint");
+
+        while(playerRunning)
+        {
+            this.gameObject.GetComponent<playerAttributes>().ReduceAttributeOverTime("Stamina", this.gameObject.GetComponent<playerAttributes>().staminaRateOfLoss);
+        
+            if(this.gameObject.GetComponent<playerAttributes>().currStamina == 0)
+            {
+                playerRunning = false;
+                StartCoroutine(SprintStaminaRegen(this.gameObject.GetComponent<playerAttributes>().staminaRegenTime));
+            }   
+        }
 
         float currSpeedX = canMove ? (playerRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float currSpeedY = canMove ? (playerRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
@@ -52,5 +66,11 @@ public class movementScript : MonoBehaviour
             playerCam.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * rotateSpeed, 0);
         }
+    }
+
+    IEnumerator SprintStaminaRegen(float timeBeforeRegen)
+    {
+        yield return new WaitForSeconds(timeBeforeRegen);
+        this.gameObject.GetComponent<playerAttributes>().RestoreAttributeOverTime("Stamina", this.gameObject.GetComponent<playerAttributes>().staminaRateOfRegen);
     }
 }

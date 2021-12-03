@@ -56,15 +56,21 @@ public class dialogueUIScript : MonoBehaviour
     {
         currentLine = nextLine;
 
-        for(int i = 0; i < currentLine.availableOptions.Length;i++)
+        for(int i = 0; i < dialogueResponseButtons.Length; i++)
         {
-            dialogueResponseButtons[i].SetActive(true);
-            dialogueResponseButtons[i].GetComponent<dialogueButtonScript>().optionRepresented = currentLine.availableOptions[i];
-
-            if(i > currentLine.availableOptions.Length)
+            for(int j = 0; j < currentLine.availableOptions.Length; j++)
             {
-                dialogueResponseButtons[i].SetActive(false);
-            }
+                if(i > j)
+                {
+                    dialogueResponseButtons[i].SetActive(false);
+                }
+
+                else
+                {
+                    dialogueResponseButtons[i].SetActive(true);
+                    dialogueResponseButtons[i].GetComponent<dialogueButtonScript>().optionRepresented = currentLine.availableOptions[i];
+                }
+            } 
         }
     }
 }
