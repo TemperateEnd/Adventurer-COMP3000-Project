@@ -15,7 +15,7 @@ public class playerUIScript : MonoBehaviour
         staminaBar.maxValue = player.GetComponent<playerAttributes>().staminaMax;
         healthBar.maxValue = player.GetComponent<playerAttributes>().healthMax;
 
-        staminaBar.value = Mathf.Clamp(player.GetComponent<playerAttributes>().currStamina, 0, staminaBar.maxValue);
-        healthBar.value = Mathf.Clamp(player.GetComponent<playerAttributes>().currHealth, 0, healthBar.maxValue);
+        staminaBar.value = player.GetComponent<playerAttributes>().currStamina;
+        healthBar.value = player.GetComponent<playerAttributes>().currHealth;
     }
 }

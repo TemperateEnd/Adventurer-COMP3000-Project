@@ -38,18 +38,22 @@ public class movementScript : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        playerRunning = Input.GetButtonDown("Sprint");
+        playerRunning = Input.GetButton("Sprint");
 
-        while(playerRunning)
+        if(playerRunning)
         {
-            this.gameObject.GetComponent<playerAttributes>().ReduceAttributeOverTime("Stamina", this.gameObject.GetComponent<playerAttributes>().staminaRateOfLoss);
-        
-            if(this.gameObject.GetComponent<playerAttributes>().currStamina == 0)
+            this.gameObject.GetComponent<playerAttributes>().ReduceAttributeOverTime("Stamina", this.gameObject.GetComponent<playerAttributes>().staminaRateOfLoss); 
+
+            if(this.gameObject.GetComponent<playerAttributes>().currStamina <=0)
             {
                 playerRunning = false;
-                StartCoroutine(SprintStaminaRegen(this.gameObject.GetComponent<playerAttributes>().staminaRegenTime));
-            }   
+            }
         }
+
+        else if(!playerRunning && this.gameObject.GetComponent<playerAttributes>().currStamina < this.gameObject.GetComponent<playerAttributes>().staminaMax)
+        {
+                StartCoroutine(SprintStaminaRegen(this.gameObject.GetComponent<playerAttributes>().staminaRegenTime));
+        }  
 
         float currSpeedX = canMove ? (playerRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float currSpeedY = canMove ? (playerRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
@@ -70,6 +74,7 @@ public class movementScript : MonoBehaviour
 
     IEnumerator SprintStaminaRegen(float timeBeforeRegen)
     {
+        Debug.Log("Should start regeneration soon");
         yield return new WaitForSeconds(timeBeforeRegen);
         this.gameObject.GetComponent<playerAttributes>().RestoreAttributeOverTime("Stamina", this.gameObject.GetComponent<playerAttributes>().staminaRateOfRegen);
     }
