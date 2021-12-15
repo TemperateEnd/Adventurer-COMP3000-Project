@@ -1,18 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Weapon : MonoBehaviour
+[CreateAssetMenu(fileName = "New Weapon", menuName = "Adventurer/Item/Equippable/Weapon")]
+public class Weapon : Equippable
 {
-    // Start is called before the first frame update
-    void Start()
+    public int damageCount;
+    public Weapon()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.typeOfEquippable = equippableType.Weapon;
     }
 }

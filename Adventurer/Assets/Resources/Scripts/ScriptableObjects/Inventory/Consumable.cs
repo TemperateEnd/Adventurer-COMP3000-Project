@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Consumable : MonoBehaviour
+public enum consumableType { Potion, Food }
+public class Consumable : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public consumableType typeOfConsumable;
 
-    // Update is called once per frame
-    void Update()
+    public Consumable()
     {
-        
+        this.typeOfItem = itemType.Consumable;
     }
 }

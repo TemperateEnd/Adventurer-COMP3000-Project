@@ -1,18 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Armor : MonoBehaviour
+[CreateAssetMenu(fileName = "New Armor", menuName = "Adventurer/Item/Equippable/Armor")]
+public class Armor : Equippable
 {
-    // Start is called before the first frame update
-    void Start()
+    public int armorCount;
+    public Armor()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.typeOfEquippable = equippableType.Armor;
     }
 }

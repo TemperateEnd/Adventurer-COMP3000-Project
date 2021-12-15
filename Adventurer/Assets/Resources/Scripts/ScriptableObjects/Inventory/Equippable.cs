@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equippable : MonoBehaviour
+public enum equippableType {Weapon, Armor}
+public abstract class Equippable : Item
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public equippableType typeOfEquippable;
 
-    // Update is called once per frame
-    void Update()
+    public Equippable()
     {
-        
+        this.typeOfItem = itemType.Equippable;
     }
 }
