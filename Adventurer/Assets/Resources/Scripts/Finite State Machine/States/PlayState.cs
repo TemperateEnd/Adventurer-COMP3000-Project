@@ -19,7 +19,7 @@ public class PlayState : IBaseState
         }
 
         stateManager.gameState = GameState.Play;
-        stateManager.playerUI.GetComponent<playerUIScript>().player = GameObject.FindWithTag("Player");
+        stateManager.playerObj = GameObject.FindWithTag("Player");
     }
 
     public void StateUpdate()

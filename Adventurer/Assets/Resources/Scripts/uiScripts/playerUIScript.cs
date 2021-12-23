@@ -9,6 +9,10 @@ public class playerUIScript : MonoBehaviour
     public Slider healthBar;
     public Slider staminaBar;
 
+    void OnEnable() {
+        player = this.gameObject.GetComponentInParent<StateManager>().playerObj;
+    }
+
     // Update is called once per frame
     void Update()
     {

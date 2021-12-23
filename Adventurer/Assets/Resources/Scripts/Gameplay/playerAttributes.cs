@@ -35,6 +35,30 @@ public class playerAttributes : MonoBehaviour
         {
             currStamina = staminaMax;
         }
+
+        //Code to test Health decrease and increase
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            ReduceAttribute("Health", 25);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            RestoreAttribute("Health", 25);
+        }
+
+        //Code to test Health decrease and increase
+
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            ReduceAttribute("Stamina", 25);
+        }
+
+        else if (Input.GetKeyDown(KeyCode.U))
+        {
+            RestoreAttribute("Stamina", 25);
+        }
     }
 
     public void ReduceAttribute(string attributeToReduce, float numberToReduce)

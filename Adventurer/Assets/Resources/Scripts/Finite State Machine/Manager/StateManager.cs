@@ -6,13 +6,14 @@ using UnityEngine.UI; //This will be useful as the FSM will be working with the 
 public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Quit }
 public class StateManager : MonoBehaviour
 {
-    public float timeScale;
+    public GameObject playerObj;
+    float timeScale;
     private IBaseState IActiveState;
     public static StateManager InstanceRef = null;
     private static StateManager instanceRef;
     public levelUpScript levelUpManager;
 
-    [Header("UI - To Be Added")]
+    [Header("UI")]
     public GameObject mainMenuUI;
     public GameObject pauseMenuUI; 
     public GameObject gameplayHUD;
@@ -20,19 +21,21 @@ public class StateManager : MonoBehaviour
     public GameObject characterDetailsUI;
     public GameObject dialogueUI;
     public GameObject playerUI;
+    public GameObject inventoryUI;
     [Space(10)]  
-    [Header("PlayState elements")]
+    [Header("PlayState elements - Dialogue")]
     public DialogueTree currentNPC;
-    public bool toggleCharDetails;
     public bool toggleDialogueActive;
     public bool withinDialogueRange;
+    [Space(5)]
+    [Header("PlayState elements - Other Menus")]
+    public bool toggleInventory;
+    public bool toggleCharDetails;
     [Space(10)]  
     public Canvas uiCanvas;
     public GameObject mainCam;
     public GameState gameState;
     [Space(10)] 
-    [Header("Player Variables")]
-    [Space(5)]
     [Header("Character Details")]
     public string characterName;
     public byte characterLevel;
@@ -154,6 +157,22 @@ public class StateManager : MonoBehaviour
                     characterDetailsUI.SetActive(toggleCharDetails);
                 }
 
+                if(Input.GetKeyDown(KeyCode.I))
+                {
+                    toggleInventory = !toggleInventory;
+
+                    if(toggleInventory)
+                    {
+                        PauseGame();
+                    }
+
+                    else
+                    {
+                        ResumeGame();
+                    }
+
+                    inventoryUI.SetActive(toggleInventory);
+                }
 
                 if(Input.GetButtonDown("Interact") && withinDialogueRange)
                 {
