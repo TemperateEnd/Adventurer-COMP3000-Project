@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class inventoryUIScript : MonoBehaviour
 {
+    public GameObject inventoryItemUIPrefab;
+    public GameObject inventoryListSection;
     public inventoryScript inventory;
     public TextMeshProUGUI weightText;
     public TextMeshProUGUI goldText;
@@ -51,6 +53,12 @@ public class inventoryUIScript : MonoBehaviour
             itemStatsText.gameObject.SetActive(false);
             itemValueText.gameObject.SetActive(false);
             itemWeightText.gameObject.SetActive(false);
+        }
+
+        foreach (Item inventoryListItem in inventory.inventoryItemsList)
+        {
+            GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, Quaternion.identity, inventoryListSection.transform);
+            inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = inventoryListItem;
         }
     }
 }
