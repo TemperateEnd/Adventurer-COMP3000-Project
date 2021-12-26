@@ -11,12 +11,6 @@ public class inventoryScript : MonoBehaviour
     public Item currentlySelectedItem;
     public playerAttributes playerAttribs;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerAttribs = this.gameObject.GetComponent<StateManager>().playerObj.GetComponent<playerAttributes>();
-    }
-
     void Awake()
     {
         foreach (Item itemInInventory in inventoryItemsList)

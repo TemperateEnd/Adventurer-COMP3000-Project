@@ -73,6 +73,7 @@ public class StateManager : MonoBehaviour
 
     void Start() 
     {
+        this.gameObject.GetComponent<inventoryScript>().enabled = false;
         IActiveState = new StartState(this);
 
         for(int i = 0; i < skills.Length; i++)
@@ -81,7 +82,7 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    private void Update() 
+    void Update() 
     {
         timeScale = Time.timeScale;
         mainCam = GameObject.FindWithTag("MainCamera");
@@ -98,17 +99,11 @@ public class StateManager : MonoBehaviour
             if(gameState == GameState.Play)
             {
                 PauseGame();
-                gameState = GameState.Pause;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
             }
 
             else if(gameState == GameState.Pause)
             {
                 ResumeGame();
-                gameState = GameState.Play;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
             }
         }
 
@@ -136,6 +131,8 @@ public class StateManager : MonoBehaviour
 
             case GameState.Play:
                 playerObj = GameObject.FindWithTag("Player");
+                this.gameObject.GetComponent<inventoryScript>().enabled = true;
+                this.gameObject.GetComponent<inventoryScript>().playerAttribs = playerObj.GetComponent<playerAttributes>();
                 mainMenuUI.SetActive(false);
                 characterCreationUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
@@ -151,7 +148,7 @@ public class StateManager : MonoBehaviour
                         PauseGame();
                     }
 
-                    else
+                    else if (toggleCharDetails == false)
                     {
                         ResumeGame();
                     }
@@ -161,22 +158,17 @@ public class StateManager : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.I))
                 {
                     toggleInventory = !toggleInventory;
-                    
 
+                    
                     if(toggleInventory)
                     {
                         PauseGame();
-                        Cursor.lockState = CursorLockMode.None;
-                        Cursor.visible = true;
                     }
 
-                    else
+                    else if (toggleInventory == false)
                     {
                         ResumeGame();
-                        Cursor.lockState = CursorLockMode.Locked;
-                        Cursor.visible = false;
                     }
-
                     inventoryUI.SetActive(toggleInventory);
                 }
 
@@ -188,16 +180,12 @@ public class StateManager : MonoBehaviour
                 if(toggleDialogueActive)
                 {
                     PauseGame();
-                    Cursor.lockState = CursorLockMode.Confined;
-                    Cursor.visible = true;
                     dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
                 }
 
                 else
                 {
                     ResumeGame();
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
                     dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
                 }
 
@@ -218,11 +206,15 @@ public class StateManager : MonoBehaviour
 
     public void PauseGame()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
     }
 }

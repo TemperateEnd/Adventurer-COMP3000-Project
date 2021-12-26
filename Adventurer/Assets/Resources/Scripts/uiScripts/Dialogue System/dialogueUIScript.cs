@@ -15,6 +15,8 @@ public class dialogueUIScript : MonoBehaviour
     void OnEnable()
     {
         ChangeLine(currentTree.rootDialogue);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame

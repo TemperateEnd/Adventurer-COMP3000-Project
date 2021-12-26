@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class inventoryUIScript : MonoBehaviour
 {
     public GameObject inventoryItemUIPrefab;
-    [SerializeField]int prefabCount;
     public GameObject inventoryListSection;
     public inventoryScript inventory;
     public TextMeshProUGUI weightText;
@@ -19,10 +18,19 @@ public class inventoryUIScript : MonoBehaviour
     public TextMeshProUGUI itemStatsText;
     public TextMeshProUGUI itemValueText;
     public TextMeshProUGUI itemWeightText;
+
     // Start is called before the first frame update
     void Start()
     {
         inventory = this.gameObject.GetComponentInParent<inventoryScript>();
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
+        foreach (Item inventoryListItem in inventory.inventoryItemsList)
+        {
+            DisplayItem(inventoryListItem);
+        }
     }
 
     // Update is called once per frame
@@ -55,16 +63,11 @@ public class inventoryUIScript : MonoBehaviour
             itemValueText.gameObject.SetActive(false);
             itemWeightText.gameObject.SetActive(false);
         }
-
-        foreach (Item inventoryListItem in inventory.inventoryItemsList)
-        {
-            DisplayItem(inventoryListItem);
-        }
     }
 
     void DisplayItem(Item itemToDisplay)
     {
-        GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, Quaternion.identity, inventoryListSection.transform);
+        GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), inventoryListSection.transform);
         inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToDisplay;
     }
 }

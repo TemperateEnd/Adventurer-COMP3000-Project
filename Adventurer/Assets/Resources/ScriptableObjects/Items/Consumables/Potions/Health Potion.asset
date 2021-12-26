@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea217f9dcfdb644d8a257716e3f78d4, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDesc: 
-  itemWeight: 0
-  itemValue: 0
+  itemName: Health Potion
+  itemDesc: A simple health potion
+  itemWeight: 1.5
+  itemValue: 15
   typeOfItem: 1
   typeOfConsumable: 0
   restoreAmount: 0

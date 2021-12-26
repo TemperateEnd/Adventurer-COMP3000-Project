@@ -22,6 +22,11 @@ public class inventoryItemScript : MonoBehaviour
     }
 
     void OnPointerClick(){
+        SelectItem();
+    }
+
+    public void SelectItem(){
+        Debug.Log("This has been clicked on");
         this.gameObject.GetComponentInParent<inventoryUIScript>().inventory.currentlySelectedItem = inventoryItem;
     }
 }
