@@ -567,7 +567,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 500, y: 50}
-  m_Spacing: {x: 0, y: 75}
+  m_Spacing: {x: 0, y: 25}
   m_Constraint: 1
   m_ConstraintCount: 1
 --- !u!1 &178944518
@@ -1888,6 +1888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
+  timeScale: 0
+  cursorVisible: 0
   levelUpManager: {fileID: 345857478}
   mainMenuUI: {fileID: 1114157983}
   pauseMenuUI: {fileID: 1431118163}
@@ -2771,6 +2773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a350bb5651f0d2740bc2fef91eb67c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabArray: []
   inventoryItemUIPrefab: {fileID: 526223313660388410, guid: 8d5db4ecadfa9cf478022b2a8011e1d8, type: 3}
   inventoryListSection: {fileID: 149212272}
   inventory: {fileID: 0}
@@ -10076,7 +10079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.3207547, g: 0.16121574, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

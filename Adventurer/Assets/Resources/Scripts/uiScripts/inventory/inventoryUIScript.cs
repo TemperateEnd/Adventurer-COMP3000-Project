@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class inventoryUIScript : MonoBehaviour
 {
+    public List<GameObject> prefabArray;
     public GameObject inventoryItemUIPrefab;
     public GameObject inventoryListSection;
     public inventoryScript inventory;
@@ -24,9 +25,11 @@ public class inventoryUIScript : MonoBehaviour
     {
         inventory = this.gameObject.GetComponentInParent<inventoryScript>();
 
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        OnEnable();
+    }
 
+    void OnEnable() 
+    {
         foreach (Item inventoryListItem in inventory.inventoryItemsList)
         {
             DisplayItem(inventoryListItem);
@@ -67,7 +70,16 @@ public class inventoryUIScript : MonoBehaviour
 
     void DisplayItem(Item itemToDisplay)
     {
-        GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, 0.0f), inventoryListSection.transform);
+        GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, transform.rotation, inventoryListSection.transform);
         inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToDisplay;
+        prefabArray.Add(inventoryListItemObj);
+    }
+
+    void OnDisable() 
+    {
+        foreach(GameObject listItemIndex in prefabArray)
+        {
+            Destroy(listItemIndex);
+        }
     }
 }

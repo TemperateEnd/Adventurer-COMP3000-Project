@@ -139,6 +139,24 @@ public class StateManager : MonoBehaviour
                 gameplayHUD.SetActive(true);
                 playerUI.SetActive(true);
 
+                if(Input.GetButtonDown("Interact") && withinDialogueRange)
+                {
+                    toggleDialogueActive = true;
+                }
+
+                if(toggleDialogueActive)
+                {
+                    PauseGame();
+                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
+                }
+
+                else
+                {
+                    ResumeGame();
+                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
+                }
+                dialogueUI.SetActive(toggleDialogueActive);
+
                 if(Input.GetKeyDown(KeyCode.C))
                 {
                     toggleCharDetails = !toggleCharDetails;
@@ -171,25 +189,6 @@ public class StateManager : MonoBehaviour
                     }
                     inventoryUI.SetActive(toggleInventory);
                 }
-
-                if(Input.GetButtonDown("Interact") && withinDialogueRange)
-                {
-                    toggleDialogueActive = true;
-                }
-
-                if(toggleDialogueActive)
-                {
-                    PauseGame();
-                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
-                }
-
-                else
-                {
-                    ResumeGame();
-                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
-                }
-
-                dialogueUI.SetActive(toggleDialogueActive);
 
                 break;
 
