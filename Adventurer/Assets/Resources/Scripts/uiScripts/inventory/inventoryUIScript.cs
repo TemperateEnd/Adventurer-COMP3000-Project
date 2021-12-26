@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class inventoryUIScript : MonoBehaviour
 {
     public GameObject inventoryItemUIPrefab;
+    [SerializeField]int prefabCount;
     public GameObject inventoryListSection;
     public inventoryScript inventory;
     public TextMeshProUGUI weightText;
@@ -57,8 +58,13 @@ public class inventoryUIScript : MonoBehaviour
 
         foreach (Item inventoryListItem in inventory.inventoryItemsList)
         {
-            GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, Quaternion.identity, inventoryListSection.transform);
-            inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = inventoryListItem;
+            DisplayItem(inventoryListItem);
         }
+    }
+
+    void DisplayItem(Item itemToDisplay)
+    {
+        GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, Quaternion.identity, inventoryListSection.transform);
+        inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToDisplay;
     }
 }

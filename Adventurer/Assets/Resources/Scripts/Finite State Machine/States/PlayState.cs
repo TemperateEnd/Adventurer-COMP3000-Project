@@ -19,6 +19,10 @@ public class PlayState : IBaseState
         }
 
         stateManager.gameState = GameState.Play;
+        
+    }
+
+    void Awake() {
         stateManager.playerObj = GameObject.FindWithTag("Player");
     }
 

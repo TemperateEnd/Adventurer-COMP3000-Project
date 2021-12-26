@@ -17,6 +17,14 @@ public class inventoryScript : MonoBehaviour
         playerAttribs = this.gameObject.GetComponent<StateManager>().playerObj.GetComponent<playerAttributes>();
     }
 
+    void Awake()
+    {
+        foreach (Item itemInInventory in inventoryItemsList)
+        {
+            currentWeight += itemInInventory.itemWeight;
+        }
+    }
+
     void Update()
     {
         weightLimit = (this.gameObject.GetComponent<StateManager>().characterStrength) * 25;

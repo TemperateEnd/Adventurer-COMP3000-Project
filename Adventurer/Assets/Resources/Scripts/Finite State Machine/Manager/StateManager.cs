@@ -135,6 +135,7 @@ public class StateManager : MonoBehaviour
                 break;
 
             case GameState.Play:
+                playerObj = GameObject.FindWithTag("Player");
                 mainMenuUI.SetActive(false);
                 characterCreationUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
@@ -160,15 +161,20 @@ public class StateManager : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.I))
                 {
                     toggleInventory = !toggleInventory;
+                    
 
                     if(toggleInventory)
                     {
                         PauseGame();
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
                     }
 
                     else
                     {
                         ResumeGame();
+                        Cursor.lockState = CursorLockMode.Locked;
+                        Cursor.visible = false;
                     }
 
                     inventoryUI.SetActive(toggleInventory);
