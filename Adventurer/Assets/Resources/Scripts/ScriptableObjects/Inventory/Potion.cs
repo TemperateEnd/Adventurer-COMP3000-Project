@@ -6,6 +6,7 @@ using UnityEngine;
 public class Potion : Consumable
 {
     public int restoreAmount;
+    public string statToRestore;
     public Potion()
     {
         this.typeOfConsumable = consumableType.Potion;

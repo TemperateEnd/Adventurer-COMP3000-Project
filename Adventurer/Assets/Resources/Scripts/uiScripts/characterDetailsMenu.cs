@@ -22,11 +22,22 @@ public class characterDetailsMenu : MonoBehaviour
         {
             SetSkills(skillLevels[i], StateManager.InstanceRef.skills[i]);
         }
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+
+        }
     }
 
     void SetSkills(GameObject skillObj, Skill skillToObj)
     {
         skillObj.GetComponent<TextMeshProUGUI>().SetText(skillToObj.skillName + ": Level " + skillToObj.skillLevel);
         skillObj.GetComponentInChildren<Slider>().value = (skillToObj.skillXP/100);
+    }
+
+    void DisableUI()
+    {
+        StateManager.InstanceRef.toggleCharDetails = false;
+        this.gameObject.SetActive(false);
     }
 }

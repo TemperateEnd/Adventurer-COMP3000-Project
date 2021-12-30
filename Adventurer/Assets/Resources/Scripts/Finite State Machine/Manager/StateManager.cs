@@ -155,40 +155,41 @@ public class StateManager : MonoBehaviour
                     ResumeGame();
                     dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
                 }
+
                 dialogueUI.SetActive(toggleDialogueActive);
 
                 if(Input.GetKeyDown(KeyCode.C))
                 {
-                    toggleCharDetails = !toggleCharDetails;
-
-                    if (toggleCharDetails)
-                    {
-                        PauseGame();
-                    }
-
-                    else if (toggleCharDetails == false)
-                    {
-                        ResumeGame();
-                    }
-                    characterDetailsUI.SetActive(toggleCharDetails);
+                    toggleCharDetails = true;
                 }
+
+                if (toggleCharDetails)
+                {
+                    PauseGame();
+                }
+
+                else
+                {
+                    ResumeGame();
+                }
+                characterDetailsUI.SetActive(toggleCharDetails);
 
                 if(Input.GetKeyDown(KeyCode.I))
                 {
-                    toggleInventory = !toggleInventory;
-
-                    
-                    if(toggleInventory)
-                    {
-                        PauseGame();
-                    }
-
-                    else if (toggleInventory == false)
-                    {
-                        ResumeGame();
-                    }
-                    inventoryUI.SetActive(toggleInventory);
+                    toggleInventory = true;
                 }
+
+                if(toggleInventory)
+                {
+                    PauseGame();
+                }
+
+                else
+                {
+                    ResumeGame();
+                }
+
+                inventoryUI.SetActive(toggleInventory);
 
                 break;
 
@@ -205,6 +206,7 @@ public class StateManager : MonoBehaviour
 
     public void PauseGame()
     {
+        Debug.Log("Should be paused");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;

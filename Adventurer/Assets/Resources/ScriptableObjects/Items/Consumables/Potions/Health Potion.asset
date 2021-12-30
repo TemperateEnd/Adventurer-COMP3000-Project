@@ -18,4 +18,5 @@ MonoBehaviour:
   itemValue: 15
   typeOfItem: 1
   typeOfConsumable: 0
-  restoreAmount: 0
+  restoreAmount: 25
+  statToRestore: Health

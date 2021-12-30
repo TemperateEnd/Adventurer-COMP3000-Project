@@ -53,6 +53,36 @@ public class inventoryUIScript : MonoBehaviour
 
             itemNameText.SetText(inventory.currentlySelectedItem.itemName);
             itemDescText.SetText(inventory.currentlySelectedItem.itemDesc);
+
+            if (inventory.currentlySelectedItem.GetType() == typeof(Weapon)){
+                Weapon tempWeapon = (Weapon) inventory.currentlySelectedItem;
+                itemStatsText.SetText("Deals " + tempWeapon.damageCount + " damage");
+            }
+
+            else if (inventory.currentlySelectedItem.GetType() == typeof(Armor)){
+                Armor tempArmor = (Armor) inventory.currentlySelectedItem;
+                itemStatsText.SetText("Defends against " + tempArmor.armorCount + " damage");   
+            }   
+
+            else if (inventory.currentlySelectedItem.GetType() ==typeof(Food)){
+                Food tempFood = (Food) inventory.currentlySelectedItem;
+                itemStatsText.SetText("Restores " + tempFood.healthRestoreCount + " health and " + tempFood.staminaRestoreCount + " stamina.");
+            }
+
+            else if(inventory.currentlySelectedItem.GetType() ==typeof(Potion))
+            {
+                Potion tempPotion = (Potion)inventory.currentlySelectedItem;
+
+                if(tempPotion.statToRestore == "Health")
+                {
+                    itemStatsText.SetText("Restores " + tempPotion.restoreAmount + " health");
+                }
+
+                else if (tempPotion.statToRestore == "Stamina")
+                {
+                    itemStatsText.SetText("Restores " + tempPotion.restoreAmount + " stamina");
+                }
+            }
             itemValueText.SetText("Worth " + inventory.currentlySelectedItem.itemValue + " Gold");
             itemWeightText.SetText("Weighs about " + inventory.currentlySelectedItem.itemWeight + " KG");
         }
@@ -81,5 +111,11 @@ public class inventoryUIScript : MonoBehaviour
         {
             Destroy(listItemIndex);
         }
+    }
+
+    void DisableUI()
+    {
+        StateManager.InstanceRef.toggleInventory = false;
+        this.gameObject.SetActive(false);
     }
 }
