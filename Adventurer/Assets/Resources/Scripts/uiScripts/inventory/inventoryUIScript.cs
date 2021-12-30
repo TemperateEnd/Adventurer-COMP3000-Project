@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class inventoryUIScript : MonoBehaviour
 {
+    public GameObject currentlySelectedInventoryItem;
     public List<GameObject> prefabArray;
     public GameObject inventoryItemUIPrefab;
     public GameObject inventoryListSection;
@@ -24,6 +25,7 @@ public class inventoryUIScript : MonoBehaviour
     void Start()
     {
         inventory = this.gameObject.GetComponentInParent<inventoryScript>();
+        inventory.uiScript = this;
 
         OnEnable();
     }
@@ -85,6 +87,19 @@ public class inventoryUIScript : MonoBehaviour
             }
             itemValueText.SetText("Worth " + inventory.currentlySelectedItem.itemValue + " Gold");
             itemWeightText.SetText("Weighs about " + inventory.currentlySelectedItem.itemWeight + " KG");
+
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                if(inventory.currentlySelectedItem.typeOfItem == itemType.Consumable)
+                {
+                    inventory.ConsumeItem((Consumable)inventory.currentlySelectedItem);
+                }
+
+                else if(inventory.currentlySelectedItem.typeOfItem == itemType.Equippable)
+                {
+                    inventory.EquipItem((Equippable)inventory.currentlySelectedItem);
+                }
+            }
         }
 
         else if (inventory.currentlySelectedItem = null)

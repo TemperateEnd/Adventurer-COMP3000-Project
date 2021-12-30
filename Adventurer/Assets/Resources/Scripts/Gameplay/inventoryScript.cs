@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class inventoryScript : MonoBehaviour
 {
+    public inventoryUIScript uiScript;
     public int playerCurrency;
     public float currentWeight;
     public float weightLimit;
@@ -43,7 +44,7 @@ public class inventoryScript : MonoBehaviour
     //     RemoveItemFromInventory(itemToDrop);
     // }
 
-    void ConsumeItem(Consumable itemToConsume) //For consumables
+    public void ConsumeItem(Consumable itemToConsume) //For consumables
     {
         if(itemToConsume.GetType() == typeof(Food)) //If item is food, cast as Food type item and replenish stamina and health
         {
@@ -59,10 +60,12 @@ public class inventoryScript : MonoBehaviour
             //insert code for potion
         }
         RemoveItemFromInventory(itemToConsume); //Item gets removed from inventory
+        Destroy(uiScript.currentlySelectedInventoryItem);
     }
 
-    void EquipItem(Equippable itemToEquip) //For equippables
+    public void EquipItem(Equippable itemToEquip) //For equippables
     {
+        Debug.Log(itemToEquip.itemName + " should have been equipped");
         if(itemToEquip.GetType() == typeof(Armor))
         {
             Armor armorToWear = (Armor)itemToEquip;
@@ -72,5 +75,6 @@ public class inventoryScript : MonoBehaviour
         {
             Weapon weaponToCarry = (Weapon)itemToEquip;
         }
+        uiScript.currentlySelectedInventoryItem.GetComponent<inventoryItemScript>().equippedIcon.SetActive(true);
     }
 }

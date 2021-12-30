@@ -38,12 +38,12 @@ public class playerAttributes : MonoBehaviour
 
         //Code to test Health decrease and increase
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Z))
         {
             ReduceAttribute("Health", 25);
         }
 
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.X))
         {
             RestoreAttribute("Health", 25);
         }
