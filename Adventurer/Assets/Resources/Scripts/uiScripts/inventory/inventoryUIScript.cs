@@ -100,6 +100,11 @@ public class inventoryUIScript : MonoBehaviour
                     inventory.EquipItem((Equippable)inventory.currentlySelectedItem);
                 }
             }
+
+            if(Input.GetKeyDown(KeyCode.I))
+            {
+                DisableUI();
+            }
         }
 
         else if (inventory.currentlySelectedItem = null)

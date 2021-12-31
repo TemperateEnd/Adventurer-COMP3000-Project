@@ -25,7 +25,7 @@ public class characterDetailsMenu : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.C))
         {
-
+            DisableUI();
         }
     }
 
