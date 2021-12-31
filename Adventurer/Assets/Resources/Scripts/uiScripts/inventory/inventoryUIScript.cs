@@ -11,9 +11,10 @@ public class inventoryUIScript : MonoBehaviour
     public GameObject inventoryItemUIPrefab;
     public GameObject inventoryListSection;
     public inventoryScript inventory;
+    [Header("UI - Variables")]
     public TextMeshProUGUI weightText;
     public TextMeshProUGUI goldText;
-    [Header("Currently selected item")]
+    [Header("UI - Currently selected item")]
     public Image itemSpriteDisplay;
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemDescText;
@@ -27,11 +28,6 @@ public class inventoryUIScript : MonoBehaviour
         inventory = this.gameObject.GetComponentInParent<inventoryScript>();
         inventory.uiScript = this;
 
-        OnEnable();
-    }
-
-    void OnEnable() 
-    {
         foreach (Item inventoryListItem in inventory.inventoryItemsList)
         {
             DisplayItem(inventoryListItem);
@@ -123,14 +119,6 @@ public class inventoryUIScript : MonoBehaviour
         GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, transform.rotation, inventoryListSection.transform);
         inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToDisplay;
         prefabArray.Add(inventoryListItemObj);
-    }
-
-    void OnDisable() 
-    {
-        foreach(GameObject listItemIndex in prefabArray)
-        {
-            Destroy(listItemIndex);
-        }
     }
 
     void DisableUI()

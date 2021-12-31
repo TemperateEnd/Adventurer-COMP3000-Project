@@ -1868,6 +1868,7 @@ GameObject:
   - component: {fileID: 345857476}
   - component: {fileID: 345857478}
   - component: {fileID: 345857479}
+  - component: {fileID: 345857480}
   m_Layer: 0
   m_Name: StateManager
   m_TagString: Untagged
@@ -1966,6 +1967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5d015e77f2fff4a889e3860e7aee04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipmentScript: {fileID: 0}
+  uiScript: {fileID: 0}
   playerCurrency: 0
   currentWeight: 0
   weightLimit: 0
@@ -1975,6 +1978,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 605b201069af2c148b2547b1077a020b, type: 2}
   currentlySelectedItem: {fileID: 0}
   playerAttribs: {fileID: 0}
+--- !u!114 &345857480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345857475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ea395df1f4fa04790868fd8360eac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerArmor: {fileID: 0}
+  playerWeapon: {fileID: 0}
+  damageOutput: 0
+  damageReduction: 0
 --- !u!1 &353912127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,6 +2790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a350bb5651f0d2740bc2fef91eb67c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlySelectedInventoryItem: {fileID: 0}
   prefabArray: []
   inventoryItemUIPrefab: {fileID: 526223313660388410, guid: 8d5db4ecadfa9cf478022b2a8011e1d8, type: 3}
   inventoryListSection: {fileID: 149212272}

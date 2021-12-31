@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class inventoryScript : MonoBehaviour
 {
+    public characterEquipmentScript equipmentScript;
     public inventoryUIScript uiScript;
     public int playerCurrency;
     public float currentWeight;
