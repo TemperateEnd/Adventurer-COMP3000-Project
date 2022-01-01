@@ -10,7 +10,6 @@ public class inventoryItemScript : MonoBehaviour
 {
     public TextMeshProUGUI itemText;
     public Item inventoryItem;
-    public GameObject equippedIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +22,15 @@ public class inventoryItemScript : MonoBehaviour
         itemText.SetText(inventoryItem.itemName);
     }
 
-    void OnPointerClick(){
+    void OnPointerClick()
+    {
         SelectItem();
     }
 
-    public void SelectItem(){
-        Debug.Log("This has been clicked on");
+    public void SelectItem()
+    {
         this.gameObject.GetComponentInParent<inventoryUIScript>().inventory.currentlySelectedItem = inventoryItem;
+        this.gameObject.GetComponentInParent<inventoryUIScript>().inventory.equipmentScript.currentlySelectedEquipment = null;
         this.gameObject.GetComponentInParent<inventoryUIScript>().currentlySelectedInventoryItem = this.gameObject;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum itemType {Equippable, Consumable}
+public enum itemType { Equippable, Consumable }
 public abstract class Item : ScriptableObject 
 {
     public string itemName;

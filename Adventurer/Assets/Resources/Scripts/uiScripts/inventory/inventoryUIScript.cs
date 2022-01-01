@@ -30,7 +30,7 @@ public class inventoryUIScript : MonoBehaviour
 
         foreach (Item inventoryListItem in inventory.inventoryItemsList)
         {
-            DisplayItem(inventoryListItem);
+            DisplayItemInList(inventoryListItem);
         }
     }
 
@@ -42,48 +42,8 @@ public class inventoryUIScript : MonoBehaviour
 
         if(inventory.currentlySelectedItem)
         {
-            itemSpriteDisplay.gameObject.SetActive(true);
-            itemNameText.gameObject.SetActive(true);
-            itemDescText.gameObject.SetActive(true);
-            itemStatsText.gameObject.SetActive(true);
-            itemValueText.gameObject.SetActive(true);
-            itemWeightText.gameObject.SetActive(true);
-
-            itemNameText.SetText(inventory.currentlySelectedItem.itemName);
-            itemDescText.SetText(inventory.currentlySelectedItem.itemDesc);
-
-            if (inventory.currentlySelectedItem.GetType() == typeof(Weapon)){
-                Weapon tempWeapon = (Weapon) inventory.currentlySelectedItem;
-                itemStatsText.SetText("Deals " + tempWeapon.damageCount + " damage");
-            }
-
-            else if (inventory.currentlySelectedItem.GetType() == typeof(Armor)){
-                Armor tempArmor = (Armor) inventory.currentlySelectedItem;
-                itemStatsText.SetText("Defends against " + tempArmor.armorCount + " damage");   
-            }   
-
-            else if (inventory.currentlySelectedItem.GetType() ==typeof(Food)){
-                Food tempFood = (Food) inventory.currentlySelectedItem;
-                itemStatsText.SetText("Restores " + tempFood.healthRestoreCount + " health and " + tempFood.staminaRestoreCount + " stamina.");
-            }
-
-            else if(inventory.currentlySelectedItem.GetType() ==typeof(Potion))
-            {
-                Potion tempPotion = (Potion)inventory.currentlySelectedItem;
-
-                if(tempPotion.statToRestore == "Health")
-                {
-                    itemStatsText.SetText("Restores " + tempPotion.restoreAmount + " health");
-                }
-
-                else if (tempPotion.statToRestore == "Stamina")
-                {
-                    itemStatsText.SetText("Restores " + tempPotion.restoreAmount + " stamina");
-                }
-            }
-            itemValueText.SetText("Worth " + inventory.currentlySelectedItem.itemValue + " Gold");
-            itemWeightText.SetText("Weighs about " + inventory.currentlySelectedItem.itemWeight + " KG");
-
+            DisplayItemInfo(inventory.currentlySelectedItem);
+            
             if(Input.GetKeyDown(KeyCode.E))
             {
                 if(inventory.currentlySelectedItem.typeOfItem == itemType.Consumable)
@@ -114,10 +74,59 @@ public class inventoryUIScript : MonoBehaviour
         }
     }
 
-    void DisplayItem(Item itemToDisplay)
+    //Displays relevant info pertaining to inventory item currently selected by player
+    void DisplayItemInfo(Item itemToDisplay)
+    {
+        itemSpriteDisplay.gameObject.SetActive(true);
+        itemNameText.gameObject.SetActive(true);
+        itemDescText.gameObject.SetActive(true);
+        itemStatsText.gameObject.SetActive(true);
+        itemValueText.gameObject.SetActive(true);
+        itemWeightText.gameObject.SetActive(true);
+
+        itemNameText.SetText(itemToDisplay.itemName);
+        itemDescText.SetText(itemToDisplay.itemDesc);
+
+        //conditional statements to check type of item so that different stats will be shown off to the player when item is selected
+
+        if (itemToDisplay.GetType() == typeof(Weapon)){
+            Weapon tempWeapon = (Weapon) itemToDisplay;
+            itemStatsText.SetText("Deals " + tempWeapon.damageCount + " damage");
+        }
+
+        else if (itemToDisplay.GetType() == typeof(Armor)){
+            Armor tempArmor = (Armor) itemToDisplay;
+            itemStatsText.SetText("Defends against " + tempArmor.armorCount + " damage");   
+        }   
+
+        else if (itemToDisplay.GetType() ==typeof(Food)){
+            Food tempFood = (Food) itemToDisplay;
+            itemStatsText.SetText("Restores " + tempFood.healthRestoreCount + " health and " + tempFood.staminaRestoreCount + " stamina.");
+        }
+
+        else if(itemToDisplay.GetType() ==typeof(Potion))
+        {
+            Potion tempPotion = (Potion)itemToDisplay;
+
+            if(tempPotion.statToRestore == attributeToRestore.Health)
+            {
+                itemStatsText.SetText("Restores " + tempPotion.restoreAmount + " health");
+            }
+
+            else if (tempPotion.statToRestore == attributeToRestore.Stamina)
+            {
+                itemStatsText.SetText("Restores " + tempPotion.restoreAmount + " stamina");
+            }
+        }
+
+        itemValueText.SetText("Worth " + itemToDisplay.itemValue + " Gold");
+        itemWeightText.SetText("Weighs about " + itemToDisplay.itemWeight + " KG");
+    }
+
+    void DisplayItemInList(Item itemToList)
     {
         GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, transform.rotation, inventoryListSection.transform);
-        inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToDisplay;
+        inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToList;
         prefabArray.Add(inventoryListItemObj);
     }
 

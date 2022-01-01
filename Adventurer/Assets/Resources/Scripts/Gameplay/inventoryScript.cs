@@ -4,39 +4,42 @@ using UnityEngine;
 
 public class inventoryScript : MonoBehaviour
 {
-    public characterEquipmentScript equipmentScript;
-    public inventoryUIScript uiScript;
     public int playerCurrency;
     public float currentWeight;
     public float weightLimit;
     public List <Item> inventoryItemsList;
     public Item currentlySelectedItem;
     public playerAttributes playerAttribs;
+    [Header("Links to other elements within system")]
+    public characterEquipmentScript equipmentScript;
+    public inventoryUIScript uiScript;
 
     void Awake()
     {
+        equipmentScript = this.gameObject.GetComponent<characterEquipmentScript>();
+        equipmentScript.playerInventory = this;
+
         foreach (Item itemInInventory in inventoryItemsList)
         {
             currentWeight += itemInInventory.itemWeight;
         }
     }
 
+    // Update is called once per frame
     void Update()
     {
         weightLimit = (this.gameObject.GetComponent<StateManager>().characterStrength) * 25;
     }
 
-    // Update is called once per frame
     void AddItemToInventory(Item itemToAdd)
     {
         inventoryItemsList.Add(itemToAdd);
-        currentWeight += itemToAdd.itemWeight;
     }
 
     void RemoveItemFromInventory(Item itemToRemove)
     {
-        currentWeight -= itemToRemove.itemWeight;
         inventoryItemsList.Remove(itemToRemove);
+        currentlySelectedItem = null;
     }
 
     // void DropItem(Item itemToDrop) Temporarily commented out as this is non-essential feature at the moment
@@ -60,7 +63,9 @@ public class inventoryScript : MonoBehaviour
             Debug.Log("Should be drinking " + itemToConsume.itemName);
             //insert code for potion
         }
+        currentWeight -= itemToConsume.itemWeight;
         RemoveItemFromInventory(itemToConsume); //Item gets removed from inventory
+        uiScript.prefabArray.Remove(uiScript.currentlySelectedInventoryItem);
         Destroy(uiScript.currentlySelectedInventoryItem);
     }
 
@@ -70,12 +75,17 @@ public class inventoryScript : MonoBehaviour
         if(itemToEquip.GetType() == typeof(Armor))
         {
             Armor armorToWear = (Armor)itemToEquip;
+            equipmentScript.EquipArmor(armorToWear);
         }
 
         else if (itemToEquip.GetType() == typeof(Weapon))
         {
             Weapon weaponToCarry = (Weapon)itemToEquip;
+            equipmentScript.EquipWeapon(weaponToCarry);
         }
-        uiScript.currentlySelectedInventoryItem.GetComponent<inventoryItemScript>().equippedIcon.SetActive(true);
+
+        RemoveItemFromInventory(itemToEquip); //Item gets removed from inventory
+        uiScript.prefabArray.Remove(uiScript.currentlySelectedInventoryItem);
+        Destroy(uiScript.currentlySelectedInventoryItem);
     }
 }
