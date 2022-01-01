@@ -2430,8 +2430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5d015e77f2fff4a889e3860e7aee04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentScript: {fileID: 0}
-  uiScript: {fileID: 0}
   playerCurrency: 0
   currentWeight: 0
   weightLimit: 0
@@ -2441,6 +2439,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 605b201069af2c148b2547b1077a020b, type: 2}
   currentlySelectedItem: {fileID: 0}
   playerAttribs: {fileID: 0}
+  equipmentScript: {fileID: 0}
+  uiScript: {fileID: 0}
 --- !u!114 &345857480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2453,6 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ea395df1f4fa04790868fd8360eac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlySelectedEquipment: {fileID: 0}
   headArmor: {fileID: 0}
   chestArmor: {fileID: 0}
   armArmor: {fileID: 0}
@@ -3141,7 +3142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &475375632
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3183,7 +3184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &479372547
 RectTransform:
   m_ObjectHideFlags: 0
