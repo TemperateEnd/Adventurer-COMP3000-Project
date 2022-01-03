@@ -60,10 +60,43 @@ public class characterEquipmentScript : MonoBehaviour
 
     public void UnequipPiece(Equippable equipmentToUnequip)
     {
-        if(equipmentToUnequip == headArmor)
+        if(equipmentToUnequip.GetType() == typeof(Armor))
         {
-            headArmor = null;
+            Armor armorUnequip = (Armor) equipmentToUnequip;
 
+            switch(armorUnequip.armorPiece)
+            {
+                case armorPieceType.Head:
+                    headArmor = null;
+                    break;
+                
+                case armorPieceType.Chest:
+                    chestArmor = null;
+                    break;
+
+                case armorPieceType.Arms:
+                    armArmor = null;
+                    break;
+
+                case armorPieceType.Legs:
+                    legArmor = null;
+                    break;
+
+                default:
+                    break;
+            }
+
+            damageReduction -= armorUnequip.armorCount;
         }
+
+        else if (equipmentToUnequip.GetType() == typeof(Weapon))
+        {
+            Weapon weaponUnequip = (Weapon) equipmentToUnequip;
+            damageOutput -= weaponUnequip.damageCount;
+            playerWeapon = null;
+        }
+
+        playerInventory.inventoryItemsList.AddItemToInventory(equipmentToUnequip);
+
     }
 }
