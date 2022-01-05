@@ -17,7 +17,15 @@ public class characterEquipmentObjScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        equipmentText.SetText(characterEquipmentPiece.itemName);
+        if(characterEquipmentPiece)
+        {
+            equipmentText.SetText(characterEquipmentPiece.itemName);
+        }
+
+        else
+        {
+            equipmentText.SetText("Null");
+        }
     }
 
     void OnPointerClick() //Enables Mouse-based interaction with object

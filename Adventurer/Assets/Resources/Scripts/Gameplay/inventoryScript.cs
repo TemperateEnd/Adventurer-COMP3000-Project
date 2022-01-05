@@ -31,12 +31,13 @@ public class inventoryScript : MonoBehaviour
         weightLimit = (this.gameObject.GetComponent<StateManager>().characterStrength) * 25;
     }
 
-    void AddItemToInventory(Item itemToAdd)
+    public void AddItemToInventory(Item itemToAdd)
     {
         inventoryItemsList.Add(itemToAdd);
+        uiScript.DisplayItemInList(itemToAdd);
     }
 
-    void RemoveItemFromInventory(Item itemToRemove)
+    public void RemoveItemFromInventory(Item itemToRemove)
     {
         inventoryItemsList.Remove(itemToRemove);
         currentlySelectedItem = null;

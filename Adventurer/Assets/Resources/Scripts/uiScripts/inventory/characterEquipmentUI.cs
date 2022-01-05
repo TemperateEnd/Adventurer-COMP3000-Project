@@ -6,7 +6,6 @@ using TMPro;
 
 public class characterEquipmentUI : MonoBehaviour
 {
-    public Equippable currentlySelectedEquipment;
     [Header("UI elements")]
     public GameObject headArmorEquipmentObj;
     public GameObject chestArmorEquipmentObj;

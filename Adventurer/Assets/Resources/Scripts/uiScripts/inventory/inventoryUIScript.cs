@@ -123,7 +123,7 @@ public class inventoryUIScript : MonoBehaviour
         itemWeightText.SetText("Weighs about " + itemToDisplay.itemWeight + " KG");
     }
 
-    void DisplayItemInList(Item itemToList)
+    public void DisplayItemInList(Item itemToList)
     {
         GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, transform.rotation, inventoryListSection.transform);
         inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToList;

@@ -19,9 +19,15 @@ public class characterEquipmentScript : MonoBehaviour
 
     void Update() 
     {
+        damageReduction = this.gameObject.GetComponent<StateManager>().characterEndurance;
+        damageOutput =  this.gameObject.GetComponent<StateManager>().characterStrength;
+
         if(currentlySelectedEquipment)
         {
-            playerInventory.currentlySelectedItem = currentlySelectedEquipment;
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                UnequipPiece(currentlySelectedEquipment);
+            }
         }
     }
 
@@ -49,13 +55,13 @@ public class characterEquipmentScript : MonoBehaviour
                 break;
         }
         
-        damageReduction += armorToEquip.armorCount + this.gameObject.GetComponent<StateManager>().characterEndurance;
+        damageReduction += armorToEquip.armorCount;
     }
 
     public void EquipWeapon(Weapon weaponToEquip)
     {
         playerWeapon = weaponToEquip;
-        damageOutput += weaponToEquip.damageCount + this.gameObject.GetComponent<StateManager>().characterStrength;
+        damageOutput += weaponToEquip.damageCount;
     }
 
     public void UnequipPiece(Equippable equipmentToUnequip)
@@ -68,18 +74,22 @@ public class characterEquipmentScript : MonoBehaviour
             {
                 case armorPieceType.Head:
                     headArmor = null;
+                    uiScript.headArmorEquipmentObj.GetComponent<characterEquipmentObjScript>().characterEquipmentPiece = null;
                     break;
                 
                 case armorPieceType.Chest:
                     chestArmor = null;
+                    uiScript.chestArmorEquipmentObj.GetComponent<characterEquipmentObjScript>().characterEquipmentPiece = null;
                     break;
 
                 case armorPieceType.Arms:
                     armArmor = null;
+                    uiScript.armArmorEquipmentObj.GetComponent<characterEquipmentObjScript>().characterEquipmentPiece = null;
                     break;
 
                 case armorPieceType.Legs:
                     legArmor = null;
+                    uiScript.legArmorEquipmentObj.GetComponent<characterEquipmentObjScript>().characterEquipmentPiece = null;
                     break;
 
                 default:
@@ -94,9 +104,9 @@ public class characterEquipmentScript : MonoBehaviour
             Weapon weaponUnequip = (Weapon) equipmentToUnequip;
             damageOutput -= weaponUnequip.damageCount;
             playerWeapon = null;
+            uiScript.weaponEquipmentObj.GetComponent<characterEquipmentObjScript>().characterEquipmentPiece = null;
         }
 
-        playerInventory.inventoryItemsList.AddItemToInventory(equipmentToUnequip);
-
+        playerInventory.AddItemToInventory(equipmentToUnequip);
     }
 }
