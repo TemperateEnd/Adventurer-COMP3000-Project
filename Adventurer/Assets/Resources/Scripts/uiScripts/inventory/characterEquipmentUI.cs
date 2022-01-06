@@ -35,5 +35,13 @@ public class characterEquipmentUI : MonoBehaviour
 
         armorCountText.SetText("Total Armor Count: " + equipmentScript.damageReduction);
         damageCountText.SetText("Total Damage Output: " + equipmentScript.damageOutput);
+
+        if(equipmentScript.currentlySelectedEquipment)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                equipmentScript.UnequipPiece(equipmentScript.currentlySelectedEquipment);
+            }
+        }
     }
 }

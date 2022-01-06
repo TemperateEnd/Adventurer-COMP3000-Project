@@ -17,18 +17,10 @@ public class characterEquipmentScript : MonoBehaviour
     public inventoryScript playerInventory;
     public characterEquipmentUI uiScript;
 
-    void Update() 
+    void LateUpdate() 
     {
-        damageReduction = this.gameObject.GetComponent<StateManager>().characterEndurance;
-        damageOutput =  this.gameObject.GetComponent<StateManager>().characterStrength;
-
-        if(currentlySelectedEquipment)
-        {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                UnequipPiece(currentlySelectedEquipment);
-            }
-        }
+        damageReduction = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageReduction);
+        damageOutput = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput);   
     }
 
     public void EquipArmor(Armor armorToEquip)
@@ -55,13 +47,13 @@ public class characterEquipmentScript : MonoBehaviour
                 break;
         }
         
-        damageReduction += armorToEquip.armorCount;
+        StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageReduction += armorToEquip.armorCount;
     }
 
     public void EquipWeapon(Weapon weaponToEquip)
     {
         playerWeapon = weaponToEquip;
-        damageOutput += weaponToEquip.damageCount;
+        StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput += weaponToEquip.damageCount;
     }
 
     public void UnequipPiece(Equippable equipmentToUnequip)
@@ -96,13 +88,13 @@ public class characterEquipmentScript : MonoBehaviour
                     break;
             }
 
-            damageReduction -= armorUnequip.armorCount;
+            StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageReduction -= armorUnequip.armorCount;
         }
 
         else if (equipmentToUnequip.GetType() == typeof(Weapon))
         {
             Weapon weaponUnequip = (Weapon) equipmentToUnequip;
-            damageOutput -= weaponUnequip.damageCount;
+            StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput -= weaponUnequip.damageCount;
             playerWeapon = null;
             uiScript.weaponEquipmentObj.GetComponent<characterEquipmentObjScript>().characterEquipmentPiece = null;
         }

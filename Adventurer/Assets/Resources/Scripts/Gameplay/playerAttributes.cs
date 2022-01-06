@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class playerAttributes : MonoBehaviour
 {
+    [Header("Combat Attributes")]
+    public float damageOutput;
+    public float damageReduction;
     [Header("Health")]
     public float healthMax;
     public float currHealth;
@@ -18,6 +21,9 @@ public class playerAttributes : MonoBehaviour
     {
         staminaMax = (100 + ((StateManager.InstanceRef.characterStrength) + (StateManager.InstanceRef.characterDexterity)));
         healthMax = (100 + ((StateManager.InstanceRef.characterStrength) + (StateManager.InstanceRef.characterEndurance)));
+
+        damageOutput = Mathf.RoundToInt(StateManager.InstanceRef.characterEndurance * .25f);
+        damageReduction = Mathf.RoundToInt(StateManager.InstanceRef.characterStrength * .25f);
 
         currStamina = staminaMax;
         currHealth = healthMax;
