@@ -38,6 +38,7 @@ public class characterEquipmentUI : MonoBehaviour
 
         if(equipmentScript.currentlySelectedEquipment)
         {
+            equipmentScript.playerInventory.currentlySelectedItem = null;
             if(Input.GetKeyDown(KeyCode.E))
             {
                 equipmentScript.UnequipPiece(equipmentScript.currentlySelectedEquipment);
