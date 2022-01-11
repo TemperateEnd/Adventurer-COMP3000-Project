@@ -62,7 +62,16 @@ public class inventoryScript : MonoBehaviour
         {
             Potion potionToDrink = (Potion)itemToConsume;
             Debug.Log("Should be drinking " + itemToConsume.itemName);
-            //insert code for potion
+
+            if(potionToDrink.statToRestore == attributeToRestore.Health)
+            {
+                playerAttribs.currHealth += restoreAmount;
+            }
+
+            else if (potionToDrink.statToRestore == attributeToRestore.Stamina)
+            {
+                playerAttribs.currStamina += restoreAmount;
+            }
         }
         currentWeight -= itemToConsume.itemWeight;
         RemoveItemFromInventory(itemToConsume); //Item gets removed from inventory
