@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //This will be useful as the FSM will be working with the in-game UI elements (i.e. menus, HUD, etc)
 
-public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Quit }
+public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Inventory, CharacterDetails, Dialogue, Quit }
 public class StateManager : MonoBehaviour
 {
     public GameObject playerObj;
@@ -130,69 +130,72 @@ public class StateManager : MonoBehaviour
                 break;
 
             case GameState.Play:
-                playerObj = GameObject.FindWithTag("Player");
-                this.gameObject.GetComponent<inventoryScript>().enabled = true;
-                this.gameObject.GetComponent<inventoryScript>().playerAttribs = playerObj.GetComponent<playerAttributes>();
                 mainMenuUI.SetActive(false);
                 characterCreationUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
                 gameplayHUD.SetActive(true);
                 playerUI.SetActive(true);
+                playerObj = GameObject.FindWithTag("Player");
+                ResumeGame();
+                if(playerObj)
+                {
+                    this.gameObject.GetComponent<inventoryScript>().enabled = true;
+                    this.gameObject.GetComponent<inventoryScript>().playerAttribs = playerObj.GetComponent<playerAttributes>();
+                }
 
                 if(Input.GetButtonDown("Interact") && withinDialogueRange)
                 {
                     toggleDialogueActive = true;
-                }
-
-                if(toggleDialogueActive)
-                {
-                    PauseGame();
                     dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
+                    gameState = GameState.Dialogue;
                 }
-
-                else
-                {
-                    ResumeGame();
-                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
-                }
-
-                dialogueUI.SetActive(toggleDialogueActive);
 
                 if(Input.GetKeyDown(KeyCode.C))
                 {
                     toggleCharDetails = true;
+                    gameState = GameState.CharacterDetails;
                 }
 
-                if (toggleCharDetails)
-                {
-                    PauseGame();
-                }
-
-                else
-                {
-                    ResumeGame();
-                }
-                characterDetailsUI.SetActive(toggleCharDetails);
 
                 if(Input.GetKeyDown(KeyCode.I))
                 {
                     toggleInventory = true;
+                    gameState = GameState.Inventory;
                 }
-
-                if(toggleInventory)
-                {
-                    PauseGame();
-                }
-
-                else
-                {
-                    ResumeGame();
-                }
-
-                inventoryUI.SetActive(toggleInventory);
 
                 break;
 
+            case GameState.CharacterDetails:
+                characterDetailsUI.SetActive(true);
+                PauseGame();
+
+                if(!toggleCharDetails)
+                {
+                    characterDetailsUI.SetActive(false);
+                    gameState = GameState.Play;
+                }
+                break;
+            case GameState.Dialogue:
+                dialogueUI.SetActive(true);
+                PauseGame();
+
+                if(!toggleDialogueActive)
+                {
+                    dialogueUI.SetActive(false);
+                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = null;
+                    gameState = GameState.Play;
+                }
+                break;
+            case GameState.Inventory:
+                inventoryUI.SetActive(true);
+                PauseGame();
+
+                if(!toggleInventory)
+                {
+                    inventoryUI.SetActive(false);
+                    gameState = GameState.Play;
+                }
+                break;
             default:
                 break;
         }
@@ -207,13 +210,14 @@ public class StateManager : MonoBehaviour
     public void PauseGame()
     {
         Debug.Log("Should be paused");
+        Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
-        Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
+        Debug.Log("Should be resumed");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;

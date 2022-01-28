@@ -19,8 +19,11 @@ public class characterEquipmentScript : MonoBehaviour
 
     void LateUpdate() 
     {
-        damageReduction = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageReduction);
-        damageOutput = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput);   
+        if(StateManager.InstanceRef.playerObj)
+        {
+            damageReduction = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageReduction);
+            damageOutput = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput);   
+        }
     }
 
     public void EquipArmor(Armor armorToEquip)

@@ -65,12 +65,12 @@ public class inventoryScript : MonoBehaviour
 
             if(potionToDrink.statToRestore == attributeToRestore.Health)
             {
-                playerAttribs.currHealth += restoreAmount;
+                playerAttribs.currHealth += potionToDrink.restoreAmount;
             }
 
             else if (potionToDrink.statToRestore == attributeToRestore.Stamina)
             {
-                playerAttribs.currStamina += restoreAmount;
+                playerAttribs.currStamina += potionToDrink.restoreAmount;
             }
         }
         currentWeight -= itemToConsume.itemWeight;

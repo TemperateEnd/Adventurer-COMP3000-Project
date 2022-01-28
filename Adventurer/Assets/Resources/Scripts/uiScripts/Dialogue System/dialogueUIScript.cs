@@ -5,7 +5,7 @@ using TMPro;
 
 public class dialogueUIScript : MonoBehaviour
 {
-    public DialogueLine currentLine;
+    private DialogueLine currentLine;
     public DialogueTree currentTree;
     [Header("UI Components")]
     public GameObject[] dialogueResponseButtons;
@@ -23,30 +23,35 @@ public class dialogueUIScript : MonoBehaviour
         dialogueText.SetText(currentTree.npcName + ": " + currentLine.dialogueText);
     }
 
-    public void EndDialogue()
+    public void EndDialogue(DialogueOption option)
     {
         for(int i = 0; i < currentLine.availableOptions.Length;i++)
         {
             dialogueResponseButtons[i].SetActive(false);
         }
+
+        if(option.optionOutcome == optionType.ATTACK) //This will be expanded upon when making combat system and enemy AI
+        {
+            Debug.Log("Enemy should be hostile");
+        }
+
         currentLine = null;
         currentTree = null;
 
         StateManager.InstanceRef.toggleDialogueActive = false;
-        this.gameObject.SetActive(false);
     }
 
     public void DialogueOptionSelected(DialogueOption optionSelected)
     {
         //if endDialogue bool is true and there is no line attached to dialogue option, end dialogue
-        if(optionSelected.endsDialogue && (optionSelected.responseToOption == null))
+        if((optionSelected.optionOutcome == optionType.END) && (optionSelected.responseToOption == null))
         {
             Debug.Log("Ending dialogue");
-            EndDialogue();
+            EndDialogue(optionSelected);
         }
 
         //if option has a response, continue dialogue
-        else
+        else if (optionSelected.optionOutcome == optionType.CONTINUE)
         {
             ChangeLine(optionSelected.responseToOption);
         }
