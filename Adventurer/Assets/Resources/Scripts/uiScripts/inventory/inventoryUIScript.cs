@@ -44,7 +44,7 @@ public class inventoryUIScript : MonoBehaviour
         {
             DisplayItemInfo(inventory.currentlySelectedItem);
             
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetButtonDown("Interact"))
             {
                 if(inventory.currentlySelectedItem.typeOfItem == itemType.Consumable)
                 {
