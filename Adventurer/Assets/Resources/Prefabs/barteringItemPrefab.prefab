@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5660628617703797472}
+  - component: {fileID: 5740745001825213585}
   m_Layer: 5
   m_Name: barteringItemPrefab
   m_TagString: Untagged
@@ -36,6 +37,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5740745001825213585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301577859845893926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a701f0fffcf1e3842aa5d021e0d8846f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objText: {fileID: 0}
+  itemContained: {fileID: 0}
 --- !u!1 &6128944280204459585
 GameObject:
   m_ObjectHideFlags: 0

@@ -620,8 +620,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3616ee690381ab4687099cc884930dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlySelectedObj: {fileID: 0}
+  barteringObjPrefab: {fileID: 5301577859845893926, guid: 14cab5842d299be48a20879a7e9d2ff4, type: 3}
+  playerItemsSection: {fileID: 542631953}
+  npcItemsSection: {fileID: 1888324696}
   barteringBackEnd: {fileID: 345857481}
   playerGoldText: {fileID: 1138170546}
+  playerPrefabArray: []
+  npcPrefabArray: []
 --- !u!1 &97096898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2716,7 @@ MonoBehaviour:
   npcGoldValue: 0
   playerItemsList: []
   npcItemsList: []
+  uiScript: {fileID: 0}
   selectedItem: {fileID: 0}
 --- !u!1 &353912127
 GameObject:
@@ -4283,7 +4290,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 100}
+  m_CellSize: {x: 250, y: 75}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2

@@ -8,6 +8,7 @@ public class barteringScript : MonoBehaviour
     public int npcGoldValue;
     public List <Item> playerItemsList;
     public List <Item> npcItemsList;
+    public barteringUIScript uiScript;
 
     public Item selectedItem;
 
