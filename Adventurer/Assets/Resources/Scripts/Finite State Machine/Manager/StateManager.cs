@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //This will be useful as the FSM will be working with the in-game UI elements (i.e. menus, HUD, etc)
 
-public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Inventory, CharacterDetails, Dialogue, Quit }
+public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Inventory, CharacterDetails, Dialogue, Barter, Quit }
 public class StateManager : MonoBehaviour
 {
     public GameObject playerObj;
@@ -22,6 +22,11 @@ public class StateManager : MonoBehaviour
     public GameObject dialogueUI;
     public GameObject playerUI;
     public GameObject inventoryUI;
+    public GameObject barteringUI;
+    [Space(10)]
+    [Header("PlayState elements - Bartering")]
+    //script instance for bartering partner
+    public bool toggleBarteringActive;
     [Space(10)]  
     [Header("PlayState elements - Dialogue")]
     public DialogueTree currentNPC;
@@ -196,6 +201,9 @@ public class StateManager : MonoBehaviour
                     gameState = GameState.Play;
                 }
                 break;
+
+            case GameState.Barter:
+                barteringUI.SetActive(true);
             default:
                 break;
         }
