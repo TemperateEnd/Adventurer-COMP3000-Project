@@ -26,7 +26,7 @@ public class StateManager : MonoBehaviour
     [Space(10)]
     [Header("PlayState elements - Bartering")]
     //script instance for bartering partner
-    public bool toggleBarteringActive;
+    public bool toggleBartering;
     [Space(10)]  
     [Header("PlayState elements - Dialogue")]
     public DialogueTree currentNPC;
@@ -204,6 +204,14 @@ public class StateManager : MonoBehaviour
 
             case GameState.Barter:
                 barteringUI.SetActive(true);
+                PauseGame();
+
+                if(!toggleBartering)
+                {
+                    barteringUI.SetActive(false);
+                    gameState = GameState.Play;
+                }
+                break;
             default:
                 break;
         }

@@ -6,21 +6,21 @@ public class collisioncheckScript : MonoBehaviour
 {
     void OnTriggerStay(Collider other) 
     {
-        if(other.gameObject.tag == "Player" && this.gameObject.GetComponentInParent<npcDialogueScript>())
+        if(other.gameObject.tag == "Player" && this.gameObject.GetComponentInParent<npcScript>())
         {
-            this.gameObject.GetComponentInParent<npcDialogueScript>().readyForDialogue = true;
+            this.gameObject.GetComponentInParent<npcScript>().readyForDialogue = true;
             GameObject.Find("StateManager").GetComponent<StateManager>().withinDialogueRange = true;
-            GameObject.Find("StateManager").GetComponent<StateManager>().currentNPC = this.gameObject.GetComponentInParent<npcDialogueScript>().npcDialogueTree;
+            GameObject.Find("StateManager").GetComponent<StateManager>().currentNPC = this.gameObject.GetComponentInParent<npcScript>().npcDialogueTree;
         }
     }
 
     void OnTriggerExit(Collider other) 
     {
-        if(other.gameObject.tag == "Player" && this.gameObject.GetComponentInParent<npcDialogueScript>())
+        if(other.gameObject.tag == "Player" && this.gameObject.GetComponentInParent<npcScript>())
         {
-            this.gameObject.GetComponentInParent<npcDialogueScript>().readyForDialogue = false;
+            this.gameObject.GetComponentInParent<npcScript>().readyForDialogue = false;
             GameObject.Find("StateManager").GetComponent<StateManager>().withinDialogueRange = false;
-             GameObject.Find("StateManager").GetComponent<StateManager>().currentNPC = null;
+            GameObject.Find("StateManager").GetComponent<StateManager>().currentNPC = null;
         }
     }
 }
