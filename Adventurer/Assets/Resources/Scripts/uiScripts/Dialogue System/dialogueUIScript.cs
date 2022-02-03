@@ -30,11 +30,6 @@ public class dialogueUIScript : MonoBehaviour
             dialogueResponseButtons[i].SetActive(false);
         }
 
-        if(option.optionOutcome == optionType.ATTACK) //This will be expanded upon when making combat system and enemy AI
-        {
-            Debug.Log("Enemy should be hostile");
-        }
-
         currentLine = null;
         currentTree = null;
 
@@ -60,6 +55,11 @@ public class dialogueUIScript : MonoBehaviour
         {
             StateManager.InstanceRef.toggleBartering = true;
             StateManager.InstanceRef.gameState = GameState.Barter;
+        }
+
+        else if(optionSelected.optionOutcome == optionType.ATTACK) //This will be expanded upon when making combat system and enemy AI
+        {
+            Debug.Log("Enemy should be hostile");
         }
     }
 

@@ -209,7 +209,7 @@ public class StateManager : MonoBehaviour
                 if(!toggleBartering)
                 {
                     barteringUI.SetActive(false);
-                    gameState = GameState.Play;
+                    gameState = GameState.Dialogue;
                 }
                 break;
             default:

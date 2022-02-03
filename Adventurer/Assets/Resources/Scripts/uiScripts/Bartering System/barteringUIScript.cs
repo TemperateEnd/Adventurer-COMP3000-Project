@@ -71,6 +71,7 @@ public class barteringUIScript : MonoBehaviour
 
     public void EndBartering()
     {
+        this.gameObject.SetActive(false);
         StateManager.InstanceRef.toggleBartering = false;
     }
 }
