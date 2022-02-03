@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class barteringUIScript : MonoBehaviour
@@ -18,6 +19,7 @@ public class barteringUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        barteringBackEnd = this.gameObject.GetComponentInParent<barteringScript>();
         barteringBackEnd.uiScript = this;
 
         foreach(Item playerListItem in barteringBackEnd.playerItemsList)
@@ -37,7 +39,7 @@ public class barteringUIScript : MonoBehaviour
         playerGoldText.SetText(barteringBackEnd.playerGoldValue + " Gold");
         npcGoldText.SetText(barteringBackEnd.npcGoldValue + " Gold");
 
-        if((barteringBackEnd.selectedItemFromNPC) && (barteringBackEnd.playerGoldValue <= barteringBackEnd.selectedItemFromNPC.itemValue))
+        if((barteringBackEnd.selectedItemFromNPC) && (barteringBackEnd.playerGoldValue >= barteringBackEnd.selectedItemFromNPC.itemValue))
         {
             if(Input.GetButtonDown("Interact"))
             {
@@ -45,9 +47,12 @@ public class barteringUIScript : MonoBehaviour
             }
         }
 
-        else if ((barteringBackEnd.selectedItemFromPlayer) && (barteringBackEnd.npcGoldValue <= barteringBackEnd.selectedItemFromPlayer.itemValue))
+        else if ((barteringBackEnd.selectedItemFromPlayer) && (barteringBackEnd.npcGoldValue >= barteringBackEnd.selectedItemFromPlayer.itemValue))
         {
-
+            if(Input.GetButtonDown("Interact"))
+            {
+                barteringBackEnd.SellItem(barteringBackEnd.selectedItemFromPlayer);
+            }
         }
     }
 
@@ -56,5 +61,16 @@ public class barteringUIScript : MonoBehaviour
         GameObject barteringItemObj = Instantiate(barteringObjPrefab, transform.position, transform.rotation, parentObj.transform);
         barteringItemObj.GetComponent<barteringObjScript>().itemContained = itemToDisplay;
         prefabArrayToUse.Add(barteringItemObj);
+    }
+
+    public void RemoveItemObj(GameObject prefab, List<GameObject> prefabArrayToUse)
+    {
+        prefabArrayToUse.Remove(prefab);
+        Destroy(prefab);
+    }
+
+    public void EndBartering()
+    {
+        StateManager.InstanceRef.toggleBartering = false;
     }
 }

@@ -10,4 +10,14 @@ public class npcScript : MonoBehaviour
     [Header("Bartering")]
     public List<Item> barteringItems;
     public int barteringGold;
+
+    public void RemoveItemFromList(Item itemToRemove)
+    {
+        barteringItems.Remove(itemToRemove);
+    }
+
+    public void AddItemToList(Item itemToAdd)
+    {
+        barteringItems.Add(itemToAdd);
+    }
 }

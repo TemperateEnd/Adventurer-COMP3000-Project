@@ -31,13 +31,19 @@ public class barteringScript : MonoBehaviour
         this.gameObject.GetComponent<inventoryScript>().playerCurrency -= itemToBuy.itemValue;
         this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().barteringGold += itemToBuy.itemValue;
         this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().barteringItems.Remove(itemToBuy);
-    
-        uiScript.npcPrefabArray.Remove(uiScript.currentlySelectedObj);
-        Destroy(uiScript.currentlySelectedObj);
+        uiScript.DisplayItem(itemToBuy, uiScript.playerItemsSection, uiScript.playerPrefabArray);
+        uiScript.RemoveItemObj(uiScript.currentlySelectedObj, uiScript.npcPrefabArray);
+        uiScript.currentlySelectedObj = null;
     }
 
     public void SellItem(Item itemToSell)
     {
-
+        this.gameObject.GetComponent<inventoryScript>().RemoveItemFromInventory(itemToSell);
+        this.gameObject.GetComponent<inventoryScript>().playerCurrency += itemToSell.itemValue;
+        this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().barteringGold -= itemToSell.itemValue;
+        this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().AddItemToList(itemToSell);
+        uiScript.DisplayItem(itemToSell, uiScript.npcItemsSection, uiScript.npcPrefabArray);
+        uiScript.RemoveItemObj(uiScript.currentlySelectedObj, uiScript.playerPrefabArray);
+        uiScript.currentlySelectedObj = null;
     }
 }

@@ -34,7 +34,6 @@ public class inventoryScript : MonoBehaviour
     public void AddItemToInventory(Item itemToAdd)
     {
         inventoryItemsList.Add(itemToAdd);
-        uiScript.DisplayItemInList(itemToAdd);
     }
 
     public void RemoveItemFromInventory(Item itemToRemove)
