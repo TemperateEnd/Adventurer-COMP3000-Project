@@ -10,7 +10,7 @@ public class collisioncheckScript : MonoBehaviour
         {
             this.gameObject.GetComponentInParent<npcScript>().readyForDialogue = true;
             GameObject.Find("StateManager").GetComponent<StateManager>().withinDialogueRange = true;
-            GameObject.Find("StateManager").GetComponent<StateManager>().currentNPC = this.gameObject.GetComponentInParent<npcScript>().npcDialogueTree;
+            GameObject.Find("StateManager").GetComponent<StateManager>().currentNPC = this.transform.parent.gameObject;
         }
     }
 

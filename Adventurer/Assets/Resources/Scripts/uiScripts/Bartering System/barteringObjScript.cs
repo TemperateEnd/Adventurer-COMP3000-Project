@@ -22,4 +22,25 @@ public class barteringObjScript : MonoBehaviour
     {
         objText.SetText(itemContained.itemName + ": " + itemContained.itemValue + " gold");
     }
+
+    void OnPointerClick()
+    {
+        SelectItem();
+    }
+
+    public void SelectItem()
+    {
+        if(this.transform.parent.gameObject.name == "npcItemPanel")
+        {
+            this.gameObject.GetComponentInParent<barteringUIScript>().barteringBackEnd.selectedItemFromNPC = itemContained;
+            this.gameObject.GetComponentInParent<barteringUIScript>().barteringBackEnd.selectedItemFromPlayer = null;
+        }
+
+        else if(this.transform.parent.gameObject.name == "playerItemPanel")
+        {
+            this.gameObject.GetComponentInParent<barteringUIScript>().barteringBackEnd.selectedItemFromPlayer = itemContained;
+            this.gameObject.GetComponentInParent<barteringUIScript>().barteringBackEnd.selectedItemFromNPC = null;
+        }
+        this.gameObject.GetComponentInParent<barteringUIScript>().currentlySelectedObj = this.gameObject;
+    }
 }

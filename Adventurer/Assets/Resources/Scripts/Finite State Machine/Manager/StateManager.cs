@@ -23,13 +23,13 @@ public class StateManager : MonoBehaviour
     public GameObject playerUI;
     public GameObject inventoryUI;
     public GameObject barteringUI;
+    public GameObject currentNPC;
     [Space(10)]
     [Header("PlayState elements - Bartering")]
     //script instance for bartering partner
     public bool toggleBartering;
     [Space(10)]  
     [Header("PlayState elements - Dialogue")]
-    public DialogueTree currentNPC;
     public bool toggleDialogueActive;
     public bool withinDialogueRange;
     [Space(5)]
@@ -151,7 +151,7 @@ public class StateManager : MonoBehaviour
                 if(Input.GetButtonDown("Interact") && withinDialogueRange)
                 {
                     toggleDialogueActive = true;
-                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC;
+                    dialogueUI.GetComponent<dialogueUIScript>().currentTree = currentNPC.GetComponent<npcScript>().npcDialogueTree;
                     gameState = GameState.Dialogue;
                 }
 

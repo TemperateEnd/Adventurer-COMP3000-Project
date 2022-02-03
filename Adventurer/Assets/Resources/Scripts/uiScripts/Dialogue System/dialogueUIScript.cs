@@ -55,6 +55,12 @@ public class dialogueUIScript : MonoBehaviour
         {
             ChangeLine(optionSelected.responseToOption);
         }
+
+        else if (optionSelected.optionOutcome == optionType.BARTER)
+        {
+            StateManager.InstanceRef.toggleBartering = true;
+            StateManager.InstanceRef.gameState = GameState.Barter;
+        }
     }
 
     public void ChangeLine(DialogueLine nextLine)
