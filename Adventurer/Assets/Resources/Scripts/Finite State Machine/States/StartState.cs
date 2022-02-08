@@ -15,7 +15,7 @@ public class StartState : IBaseState
 
         if(scene.name != "StartState")
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("StartState");
         }
 
         stateManager.gameState = GameState.MainMenu;

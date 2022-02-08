@@ -103,11 +103,13 @@ public class StateManager : MonoBehaviour
         {
             if(gameState == GameState.Play)
             {
+                gameState = GameState.Pause;
                 PauseGame();
             }
 
             else if(gameState == GameState.Pause)
             {
+                gameState = GameState.Play;
                 ResumeGame();
             }
         }
