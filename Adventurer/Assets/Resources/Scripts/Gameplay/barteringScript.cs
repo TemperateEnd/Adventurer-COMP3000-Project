@@ -34,6 +34,7 @@ public class barteringScript : MonoBehaviour
         uiScript.DisplayItem(itemToBuy, uiScript.playerItemsSection, uiScript.playerPrefabArray);
         uiScript.RemoveItemObj(uiScript.currentlySelectedObj, uiScript.npcPrefabArray);
         uiScript.currentlySelectedObj = null;
+        selectedItemFromNPC = null;
     }
 
     public void SellItem(Item itemToSell)
@@ -45,5 +46,6 @@ public class barteringScript : MonoBehaviour
         uiScript.DisplayItem(itemToSell, uiScript.npcItemsSection, uiScript.npcPrefabArray);
         uiScript.RemoveItemObj(uiScript.currentlySelectedObj, uiScript.playerPrefabArray);
         uiScript.currentlySelectedObj = null;
+        selectedItemFromPlayer = null;
     }
 }

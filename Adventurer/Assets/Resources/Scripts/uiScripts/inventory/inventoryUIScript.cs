@@ -27,9 +27,23 @@ public class inventoryUIScript : MonoBehaviour
     {
         inventory = this.gameObject.GetComponentInParent<inventoryScript>();
         inventory.uiScript = this;
+        
+        EnableUI();
+    }
 
-        foreach (Item inventoryListItem in inventory.inventoryItemsList)
+    void OnEnable() {
+        for(int i = inventory.inventoryItemsList.Count - 1; i >= 0; i--)
         {
+            Destroy(prefabArray[i]);
+        }
+
+        prefabArray.Clear();
+        
+        EnableUI();
+    }
+
+    void EnableUI(){
+        foreach (Item inventoryListItem in inventory.inventoryItemsList){
             DisplayItemInList(inventoryListItem);
         }
     }
@@ -56,11 +70,6 @@ public class inventoryUIScript : MonoBehaviour
                     inventory.EquipItem((Equippable)inventory.currentlySelectedItem);
                 }
             }
-
-            if(Input.GetKeyDown(KeyCode.I))
-            {
-                DisableUI();
-            }
         }
 
         else if (inventory.currentlySelectedItem = null)
@@ -71,6 +80,11 @@ public class inventoryUIScript : MonoBehaviour
             itemStatsText.gameObject.SetActive(false);
             itemValueText.gameObject.SetActive(false);
             itemWeightText.gameObject.SetActive(false);
+        }
+
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            DisableUI();
         }
     }
 
