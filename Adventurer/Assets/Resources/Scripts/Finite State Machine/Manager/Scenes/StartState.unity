@@ -3881,7 +3881,7 @@ MonoBehaviour:
   prefabArray: []
   inventoryItemUIPrefab: {fileID: 526223313660388410, guid: 8d5db4ecadfa9cf478022b2a8011e1d8, type: 3}
   inventoryListSection: {fileID: 149212272}
-  inventory: {fileID: 0}
+  inventory: {fileID: 345857479}
   weightText: {fileID: 1611465132}
   goldText: {fileID: 1004366445}
   itemSpriteDisplay: {fileID: 1230280677}

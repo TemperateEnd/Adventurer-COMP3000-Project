@@ -10,4 +10,5 @@ public abstract class Item : ScriptableObject
     public float itemWeight;
     public int itemValue;
     public itemType typeOfItem;
+    public GameObject itemModel;
 }

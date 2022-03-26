@@ -23,23 +23,28 @@ public class inventoryUIScript : MonoBehaviour
     public TextMeshProUGUI itemWeightText;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         inventory = this.gameObject.GetComponentInParent<inventoryScript>();
         inventory.uiScript = this;
+    }
+
+    void OnEnable() {
+
+        if(prefabArray.Count > 0) //if inventory has been opened previously, reset the UI to prevent duplication
+        {
+            ResetUI();
+        }
         
         EnableUI();
     }
 
-    void OnEnable() {
-        for(int i = inventory.inventoryItemsList.Count - 1; i >= 0; i--)
+    void ResetUI(){
+        for(int i = 0; i < inventory.inventoryItemsList.Count - 1; i++)
         {
             Destroy(prefabArray[i]);
         }
 
         prefabArray.Clear();
-        
-        EnableUI();
     }
 
     void EnableUI(){
@@ -49,8 +54,7 @@ public class inventoryUIScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         goldText.SetText(inventory.playerCurrency + " Gold");
         weightText.SetText(inventory.currentWeight + "/" + inventory.weightLimit);
 
@@ -89,8 +93,7 @@ public class inventoryUIScript : MonoBehaviour
     }
 
     //Displays relevant info pertaining to inventory item currently selected by player
-    void DisplayItemInfo(Item itemToDisplay)
-    {
+    void DisplayItemInfo(Item itemToDisplay){
         itemSpriteDisplay.gameObject.SetActive(true);
         itemNameText.gameObject.SetActive(true);
         itemDescText.gameObject.SetActive(true);
@@ -137,15 +140,13 @@ public class inventoryUIScript : MonoBehaviour
         itemWeightText.SetText("Weighs about " + itemToDisplay.itemWeight + " KG");
     }
 
-    public void DisplayItemInList(Item itemToList)
-    {
+    public void DisplayItemInList(Item itemToList){
         GameObject inventoryListItemObj = Instantiate(inventoryItemUIPrefab, transform.position, transform.rotation, inventoryListSection.transform);
         inventoryListItemObj.GetComponent<inventoryItemScript>().inventoryItem = itemToList;
         prefabArray.Add(inventoryListItemObj);
     }
 
-    void DisableUI()
-    {
+    void DisableUI(){
         StateManager.InstanceRef.toggleInventory = false;
         this.gameObject.SetActive(false);
     }

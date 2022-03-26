@@ -16,13 +16,15 @@ public class characterEquipmentScript : MonoBehaviour
     [Header("Links to other elements within system")]
     public inventoryScript playerInventory;
     public characterEquipmentUI uiScript;
+    public GameObject playerWeaponSpace;
 
     void LateUpdate() 
     {
         if(StateManager.InstanceRef.playerObj)
         {
             damageReduction = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageReduction);
-            damageOutput = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput);   
+            damageOutput = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput);
+            playerWeaponSpace = StateManager.InstanceRef.playerObj.transform.Find("weapon").gameObject; 
         }
     }
 
@@ -57,6 +59,7 @@ public class characterEquipmentScript : MonoBehaviour
     {
         playerWeapon = weaponToEquip;
         StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput += weaponToEquip.damageCount;
+        Instantiate(weaponToEquip.itemModel, playerWeaponSpace.transform);
     }
 
     public void UnequipPiece(Equippable equipmentToUnequip)
