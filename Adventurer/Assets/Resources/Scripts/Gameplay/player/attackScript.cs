@@ -54,7 +54,7 @@ public class attackScript : MonoBehaviour
         weaponAnimator.SetTrigger("isAttacking");
         yield return new WaitForSeconds(attackTime);
         weaponModelCollisionPoint.GetComponent<Collider>().enabled = true;
-        yield return new WaitForSeconds(0.20f);
+        yield return new WaitForSeconds(0.33f);
         weaponModelCollisionPoint.GetComponent<Collider>().enabled = false;
     }
 }

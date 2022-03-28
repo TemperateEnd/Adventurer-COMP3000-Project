@@ -7,9 +7,26 @@ public class npcScript : MonoBehaviour
     [Header("Dialogue")]
     public DialogueTree npcDialogueTree;
     public bool readyForDialogue;
-    [Header("Bartering")]
+    public bool readyForCombat;
+    
+    [Header("NPC - Items")]
+    public Armor npcArmor;
+    public Weapon npcWeapon;
     public List<Item> barteringItems;
     public int barteringGold;
+
+    async void Update()
+    {
+        if(readyForCombat)
+        {
+            this.gameObject.GetComponent<npcCombat>().enabled = true;
+        }
+
+        else
+        {
+            this.gameObject.GetComponent<npcCombat>().enabled = false;
+        }
+    }
 
     public void RemoveItemFromList(Item itemToRemove)
     {
