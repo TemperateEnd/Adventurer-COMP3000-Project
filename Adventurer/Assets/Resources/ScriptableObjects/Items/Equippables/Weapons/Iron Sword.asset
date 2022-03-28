@@ -17,6 +17,6 @@ MonoBehaviour:
   itemWeight: 5.5
   itemValue: 20
   typeOfItem: 0
-  itemModel: {fileID: 919132149155446097, guid: 3bb561efd2862a3409ad5b41de703f7b, type: 3}
+  itemModel: {fileID: 6229616371731147471, guid: 4b3375254321d2c4eaa5bdecb77cc3e0, type: 3}
   typeOfEquippable: 0
   damageCount: 5

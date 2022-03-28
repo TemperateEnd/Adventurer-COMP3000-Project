@@ -24,7 +24,14 @@ public class characterEquipmentScript : MonoBehaviour
         {
             damageReduction = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageReduction);
             damageOutput = Mathf.RoundToInt(StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput);
-            playerWeaponSpace = StateManager.InstanceRef.playerObj.transform.Find("weapon").gameObject; 
+            
+            foreach(Transform child in StateManager.InstanceRef.playerObj.GetComponentInChildren<Transform>())
+            {
+                if(child.name == "weapon")
+                {
+                    playerWeaponSpace = child.gameObject;
+                }
+            }
         }
     }
 
@@ -59,7 +66,6 @@ public class characterEquipmentScript : MonoBehaviour
     {
         playerWeapon = weaponToEquip;
         StateManager.InstanceRef.playerObj.GetComponent<playerAttributes>().damageOutput += weaponToEquip.damageCount;
-        Instantiate(weaponToEquip.itemModel, playerWeaponSpace.transform);
     }
 
     public void UnequipPiece(Equippable equipmentToUnequip)

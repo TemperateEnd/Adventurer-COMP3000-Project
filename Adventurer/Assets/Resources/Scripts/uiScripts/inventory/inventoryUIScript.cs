@@ -39,7 +39,7 @@ public class inventoryUIScript : MonoBehaviour
     }
 
     void ResetUI(){
-        for(int i = 0; i < inventory.inventoryItemsList.Count - 1; i++)
+        for(int i = 0; i < inventory.inventoryItemsList.Count; i++)
         {
             Destroy(prefabArray[i]);
         }

@@ -163,11 +163,15 @@ public class StateManager : MonoBehaviour
                     gameState = GameState.CharacterDetails;
                 }
 
-
                 if(Input.GetKeyDown(KeyCode.I))
                 {
                     toggleInventory = true;
                     gameState = GameState.Inventory;
+                }
+
+                if(Input.GetKeyDown(KeyCode.R))
+                {
+                    playerObj.GetComponentInChildren<attackScript>().enabled = true;
                 }
 
                 break;
