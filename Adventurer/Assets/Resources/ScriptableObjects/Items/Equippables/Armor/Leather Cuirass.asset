@@ -17,6 +17,8 @@ MonoBehaviour:
   itemWeight: 4.5
   itemValue: 25
   typeOfItem: 0
+  itemModel: {fileID: 0}
   typeOfEquippable: 1
+  armorType: Light Armor
   armorCount: 4
   armorPiece: 1

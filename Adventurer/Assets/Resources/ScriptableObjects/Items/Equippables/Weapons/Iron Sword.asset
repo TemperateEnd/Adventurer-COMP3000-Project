@@ -19,4 +19,5 @@ MonoBehaviour:
   typeOfItem: 0
   itemModel: {fileID: 6229616371731147471, guid: 4b3375254321d2c4eaa5bdecb77cc3e0, type: 3}
   typeOfEquippable: 0
+  weaponType: Sword
   damageCount: 5

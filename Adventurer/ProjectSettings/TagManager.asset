@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - weaponAttackCollisionPoint
+  - NPC
   layers:
   - Default
   - TransparentFX

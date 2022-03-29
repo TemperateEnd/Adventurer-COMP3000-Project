@@ -193,10 +193,11 @@ GameObject:
   - component: {fileID: 592159113}
   - component: {fileID: 592159112}
   - component: {fileID: 592159116}
+  - component: {fileID: 592159118}
   - component: {fileID: 592159117}
   m_Layer: 0
   m_Name: testNPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,7 +210,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592159111}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -275,6 +276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 243548561}
+  - {fileID: 1531761964}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -290,10 +292,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e7319209d2ab04a97b35a516fda1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcStrength: 5
+  npcIntelligence: 5
+  npcDexterity: 5
+  npcEndurance: 5
+  npcWisdom: 5
+  npcCharisma: 5
+  maxHP: 100
+  currHP: 0
+  maxStamina: 100
+  currStamina: 0
   npcDialogueTree: {fileID: 11400000, guid: 5122f3b47c11bbe4e8c516cb22c94262, type: 2}
   readyForDialogue: 0
   readyForCombat: 0
-  npcArmor: {fileID: 11400000, guid: 16cfa2bb73df675478f483e5f79b4b7d, type: 2}
+  npcArmor: {fileID: 0}
   npcWeapon: {fileID: 11400000, guid: 605b201069af2c148b2547b1077a020b, type: 2}
   barteringItems:
   - {fileID: 11400000, guid: 55c15bbbbf2e73f449d04ee2b0d86491, type: 2}
@@ -302,6 +314,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5235e272efd98f4fba131ce56fd81a7, type: 2}
   - {fileID: 11400000, guid: 55c15bbbbf2e73f449d04ee2b0d86491, type: 2}
   barteringGold: 100
+  interationBoundary: {fileID: 243548560}
 --- !u!54 &592159117
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -318,6 +331,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &592159118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592159111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10832f29b50bdda46b988e47975ffab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alreadyHit: 0
 --- !u!1 &831442202
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,6 +453,7 @@ GameObject:
   - component: {fileID: 1114528635}
   - component: {fileID: 1114528637}
   - component: {fileID: 1114528638}
+  - component: {fileID: 1114528640}
   - component: {fileID: 1114528639}
   m_Layer: 0
   m_Name: TestPlayer
@@ -537,6 +564,67 @@ MonoBehaviour:
   staminaRegenTime: 3
   staminaMax: 0
   currStamina: 0
+--- !u!114 &1114528640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114528633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10832f29b50bdda46b988e47975ffab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alreadyHit: 0
+--- !u!1 &1531761963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531761964}
+  - component: {fileID: 1531761965}
+  m_Layer: 0
+  m_Name: npcWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1531761964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531761963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 592159115}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1531761965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531761963}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ab7f13479e6864282de01ab849d24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAnimator: {fileID: 0}
+  target: {fileID: 0}
+  weaponModel: {fileID: 0}
+  weaponModelCollisionPoint: {fileID: 0}
+  damageOutput: 0
 --- !u!1 &1650854142
 GameObject:
   m_ObjectHideFlags: 0
