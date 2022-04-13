@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04132448c830b1041869bf7dda2e5677, type: 3}
   m_Name: Line2-Response1
   m_EditorClassIdentifier: 
+  optionEnabled: 1
   optionText: Oh cool
   responseToOption: {fileID: 0}
   optionOutcome: 1
