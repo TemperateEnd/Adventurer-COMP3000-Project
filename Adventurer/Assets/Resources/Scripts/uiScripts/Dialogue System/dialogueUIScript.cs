@@ -1,4 +1,6 @@
-using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -67,21 +69,26 @@ public class dialogueUIScript : MonoBehaviour
     {
         currentLine = nextLine;
 
+        List<DialogueOption> availableOptions = new List<DialogueOption>(); 
+
+        for(int j = 0; j < currentLine.availableOptions.Length; j++)
+        {
+            if(currentLine.availableOptions[j].optionEnabled)               //checks that the option currently being looked at is unlocked,                      
+                availableOptions.Add(currentLine.availableOptions[j]);      //and if unlocked, add to list and have button represent last index in list
+        } 
+
         for(int i = 0; i < dialogueResponseButtons.Length; i++)
         {
-            for(int j = 0; j < currentLine.availableOptions.Length; j++)
+            if(i > (availableOptions.Count -1))
             {
-                if(i > j)
-                {
                     dialogueResponseButtons[i].SetActive(false);
-                }
-
-                else
-                {
-                    dialogueResponseButtons[i].SetActive(true);
-                    dialogueResponseButtons[i].GetComponent<dialogueButtonScript>().optionRepresented = currentLine.availableOptions[i];
-                }
             } 
+
+            else
+            {
+                dialogueResponseButtons[i].SetActive(true);
+                dialogueResponseButtons[i].GetComponent<dialogueButtonScript>().optionRepresented = availableOptions[i];
+            }
         }
     }
 }

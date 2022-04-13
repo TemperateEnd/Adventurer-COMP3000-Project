@@ -48,8 +48,12 @@ public class inventoryUIScript : MonoBehaviour
     }
 
     void EnableUI(){
-        foreach (Item inventoryListItem in inventory.inventoryItemsList){
-            DisplayItemInList(inventoryListItem);
+        
+        if(inventory.inventoryItemsList.Count > 0) //checks that there are items in the inventory before displaying them
+        {
+            foreach (Item inventoryListItem in inventory.inventoryItemsList){
+                DisplayItemInList(inventoryListItem);
+            }
         }
     }
 

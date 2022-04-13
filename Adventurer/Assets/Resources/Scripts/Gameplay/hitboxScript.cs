@@ -17,17 +17,9 @@ public class hitboxScript : MonoBehaviour
         if(other.gameObject.tag == "weaponAttackCollisionPoint")
         {
             if (this.gameObject.tag == "NPC"){
+                Debug.Log("Skill used: " + other.gameObject.GetComponentInParent<attackScript>().currentlyEquippedWeapon.associatedSkill.skillName);
                 this.gameObject.GetComponent<npcScript>().RemoveHealth((int)other.gameObject.GetComponentInParent<playerAttributes>().damageOutput);
-            
-                switch(other.gameObject.GetComponentInParent<attackScript>().currentlyEquippedWeapon.weaponType)
-                {
-                    case "Sword":
-                        GameObject.Find("StateManager").GetComponent<levelUpScript>().SkillAddXP(StateManager.InstanceRef.skills[7], 10.0f);
-                        break;
-
-                    default:
-                        break;
-                }
+                EventManager.TriggerEvent("Use", other.gameObject.GetComponentInParent<attackScript>().currentlyEquippedWeapon.associatedSkill);
             }
 
             else if(this.gameObject.tag == "Player"){

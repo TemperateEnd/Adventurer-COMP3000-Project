@@ -27,7 +27,7 @@ public class npcScript : MonoBehaviour
     public List<Item> barteringItems;
     public int barteringGold;
     [Header("NPC - Misc")]
-    public GameObject interationBoundary;
+    public GameObject interactionBoundary;
 
     void Start() {
         maxHP = (100 + (npcStrength + npcEndurance));
@@ -35,19 +35,21 @@ public class npcScript : MonoBehaviour
         maxStamina = (100 + (npcStrength + npcDexterity));
         currStamina = maxStamina;
     }
-
     void Update()
     {
         if(readyForCombat)
         {
-            this.gameObject.GetComponentInChildren<npcCombat>().enabled = true;
-            interationBoundary.SetActive(false);
+            if(this.gameObject.GetComponentInChildren<npcCombat>() && interactionBoundary)
+            {
+                this.gameObject.GetComponentInChildren<npcCombat>().enabled = true;
+                interactionBoundary.SetActive(false);
+            }
         }
 
         else
         {
             this.gameObject.GetComponentInChildren<npcCombat>().enabled = false;
-            interationBoundary.SetActive(true);
+            interactionBoundary.SetActive(true);
         }
 
         if(currHP <= 0)

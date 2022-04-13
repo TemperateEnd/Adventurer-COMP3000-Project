@@ -112,5 +112,6 @@ public class characterEquipmentScript : MonoBehaviour
         }
 
         playerInventory.AddItemToInventory(equipmentToUnequip);
+        playerInventory.uiScript.DisplayItemInList(equipmentToUnequip);
     }
 }
