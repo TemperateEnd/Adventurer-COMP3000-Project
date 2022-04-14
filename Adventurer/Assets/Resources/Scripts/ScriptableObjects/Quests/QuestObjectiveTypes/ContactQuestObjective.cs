@@ -2,17 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContactQuestObjective : MonoBehaviour
+[CreateAssetMenu(fileName = "New Quest", menuName = "Adventurer/Quest/Quest Objectives/Contact NPC", order = 0)]
+public class ContactQuestObjective : QuestObjective
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string nameOfNPC;
 }

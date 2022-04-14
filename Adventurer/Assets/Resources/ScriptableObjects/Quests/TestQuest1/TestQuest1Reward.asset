@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e858b58101705347ab3cae168f3a409, type: 3}
-  m_Name: TestQuest1
+  m_Script: {fileID: 11500000, guid: ca2d5c3b7bda9524a9da62ce06c68426, type: 3}
+  m_Name: TestQuest1Reward
   m_EditorClassIdentifier: 
-  questName: 
-  objectivesList: []
-  currentObjective: {fileID: 0}
-  reward: {fileID: 0}
+  goldEarned: 150
+  itemsEarned: []

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class TypedEvent : UnityEvent<object>{}
+public class TypedEvent : UnityEvent<object>{ }
 
 public class EventManager : MonoBehaviour
 {

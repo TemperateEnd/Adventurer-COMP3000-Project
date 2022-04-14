@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -13,15 +14,17 @@ public class Quest : ScriptableObject
 
     // Start is called before the first frame update
     public void startQuest()
-    {}
+    {
+        currentObjective = objectivesList[0];
+    }
 
     // Update is called once per frame
-    public void progressQuest()
-    {}
+    public void progressQuest(int newQuestObjIndex)
+    {
+        if(currentObjective = objectivesList.Last())
+            endQuest();
 
-    public void endQuest()
-    {}
-
-    public void rewardPlayer()
-    {}
+        else
+            currentObjective = objectivesList[newQuestObjIndex];
+    }
 }
