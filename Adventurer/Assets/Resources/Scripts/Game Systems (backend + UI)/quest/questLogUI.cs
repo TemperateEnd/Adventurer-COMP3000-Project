@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class questLogBackend : MonoBehaviour
+public class questLogUI : MonoBehaviour
 {
-    public List<Quest> acceptedQuests;
-
+    public Quest selectedQuest;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +15,5 @@ public class questLogBackend : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void updateQuestProgress(Quest questToUpdate)
-    {
-        questToUpdate.currentObjective.progressQuest();
     }
 }

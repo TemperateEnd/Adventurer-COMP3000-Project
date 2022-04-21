@@ -10,4 +10,5 @@ public class DialogueOption : ScriptableObject
     public string optionText;
     public DialogueLine responseToOption;
     public optionType optionOutcome;
+    public Quest questToStart;
 }

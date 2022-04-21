@@ -7,6 +7,7 @@ public class QuestObjective : ScriptableObject
     public bool objectiveComplete;
     public int progressTowardsObj;
     public int objGoalNumber;
+    public QuestObjective nextObjective;
 
     bool evaluateObjectiveComplete()
     {
