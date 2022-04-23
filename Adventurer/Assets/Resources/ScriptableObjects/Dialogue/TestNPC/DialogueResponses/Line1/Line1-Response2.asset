@@ -15,4 +15,5 @@ MonoBehaviour:
   optionEnabled: 1
   optionText: Goodbye
   responseToOption: {fileID: 0}
-  optionOutcome: 1
+  optionOutcome: 0
+  questToStart: {fileID: 0}

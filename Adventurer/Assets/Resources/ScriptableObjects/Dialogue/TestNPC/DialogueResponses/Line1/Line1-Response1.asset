@@ -15,4 +15,5 @@ MonoBehaviour:
   optionEnabled: 1
   optionText: What are you selling?
   responseToOption: {fileID: 0}
-  optionOutcome: 2
+  optionOutcome: 1
+  questToStart: {fileID: 0}

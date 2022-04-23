@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Line1-Response3
   m_EditorClassIdentifier: 
   optionEnabled: 0
-  optionText: 
-  responseToOption: {fileID: 0}
+  optionText: What do you need?
+  responseToOption: {fileID: 11400000, guid: 2dc3cbc529bf10d4bb61eeae80d3ea6c, type: 2}
   optionOutcome: 0
   questToStart: {fileID: 0}

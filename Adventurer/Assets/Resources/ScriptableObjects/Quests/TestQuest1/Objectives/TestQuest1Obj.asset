@@ -16,5 +16,6 @@ MonoBehaviour:
   objectiveComplete: 0
   progressTowardsObj: 0
   objGoalNumber: 1
+  nextObjective: {fileID: 0}
+  optionToUnlock: {fileID: 0}
   itemToDeliver: {fileID: 11400000, guid: b5235e272efd98f4fba131ce56fd81a7, type: 2}
-  npcToDeliverTo: {fileID: 0}

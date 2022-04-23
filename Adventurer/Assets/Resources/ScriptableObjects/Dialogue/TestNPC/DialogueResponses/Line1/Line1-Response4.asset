@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Line1-Response4
   m_EditorClassIdentifier: 
   optionEnabled: 0
-  optionText: 
+  optionText: I have your potion
   responseToOption: {fileID: 0}
   optionOutcome: 0
   questToStart: {fileID: 0}

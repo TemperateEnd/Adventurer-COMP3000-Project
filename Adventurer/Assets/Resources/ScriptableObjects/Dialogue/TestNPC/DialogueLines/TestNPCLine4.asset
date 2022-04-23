@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac5466a667a1e04d835da41060ed957, type: 3}
   m_Name: TestNPCLine4
   m_EditorClassIdentifier: 
-  dialogueText: 
-  availableOptions: []
+  dialogueText: Splendid! I appreciate you helping me
+  availableOptions:
+  - {fileID: 11400000, guid: 93ab373c7df64e744b6c6272d974587a, type: 2}
+  - {fileID: 11400000, guid: fc41803d3d4b6ca4aa5bfc0bb2bfe4cd, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

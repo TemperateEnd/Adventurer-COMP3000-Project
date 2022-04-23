@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionEnabled: 1
   optionText: Oh cool
-  responseToOption: {fileID: 0}
-  optionOutcome: 1
+  responseToOption: {fileID: 11400000, guid: 0a046425e037b014b96ff37cd90fbdc7, type: 2}
+  optionOutcome: 0
+  questToStart: {fileID: 0}
