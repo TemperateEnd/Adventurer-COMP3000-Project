@@ -8,8 +8,9 @@ public class QuestObjective : ScriptableObject
     public int progressTowardsObj;
     public int objGoalNumber;
     public QuestObjective nextObjective;
+    public DialogueOption optionToUnlock;
 
-    bool evaluateObjectiveComplete()
+    public bool evaluateObjectiveComplete()
     {
         if(progressTowardsObj == objGoalNumber)
             return true;

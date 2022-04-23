@@ -19,5 +19,16 @@ public class Quest : ScriptableObject
         {
             currentObjective = currentObjective.nextObjective; //takes next objective after current objective and makes it current objective
         }
+
+        else
+        {
+            GameObject.Find("StateManager").GetComponent<inventoryScript>().AddGold(reward.goldEarned);
+
+            if(reward.itemsEarned.Count >= 1){
+                foreach(Item rewardEarned in reward.itemsEarned)
+                GameObject.Find("StateManager").GetComponent<inventoryScript>().AddItemToInventory(rewardEarned);
+            }
+        }
     }
+
 }

@@ -6,5 +6,4 @@ using UnityEngine;
 public class DeliverQuestObjective : QuestObjective
 {
     public Item itemToDeliver;
-    public GameObject npcToDeliverTo;
 }

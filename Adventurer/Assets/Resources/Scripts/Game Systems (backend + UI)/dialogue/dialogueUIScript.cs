@@ -50,6 +50,10 @@ public class dialogueUIScript : MonoBehaviour
         //if option has a response, continue dialogue
         else if (optionSelected.optionOutcome == optionType.CONTINUE)
         {
+            if(optionSelected.questToStart)
+            {
+                EventManager.TriggerEvent("StartQuest", optionSelected.questToStart); //if option starts quest, start quest
+            }
             ChangeLine(optionSelected.responseToOption);
         }
 

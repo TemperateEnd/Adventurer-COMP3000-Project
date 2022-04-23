@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2d0ae25e5c11844916884edac8b867, type: 3}
-  m_Name: Line1-Response4
+  m_Script: {fileID: 11500000, guid: 1ac5466a667a1e04d835da41060ed957, type: 3}
+  m_Name: TestNPCLine4
   m_EditorClassIdentifier: 
-  optionEnabled: 0
-  optionText: 
-  responseToOption: {fileID: 0}
-  optionOutcome: 0
-  questToStart: {fileID: 0}
-  itemToGive: {fileID: 0}
+  dialogueText: 
+  availableOptions: []

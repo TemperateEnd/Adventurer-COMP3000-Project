@@ -31,6 +31,16 @@ public class inventoryScript : MonoBehaviour
         weightLimit = (this.gameObject.GetComponent<StateManager>().characterStrength) * 25;
     }
 
+    public void AddGold(int goldToAdd)
+    {
+        playerCurrency += goldToAdd;
+    }
+
+    public void SubtractGold(int goldToSubtract)
+    {
+        playerCurrency -= goldToSubtract;
+    }
+
     public void AddItemToInventory(Item itemToAdd)
     {
         inventoryItemsList.Add(itemToAdd);

@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2d0ae25e5c11844916884edac8b867, type: 3}
-  m_Name: Line1-Response4
+  m_Script: {fileID: 11500000, guid: 04132448c830b1041869bf7dda2e5677, type: 3}
+  m_Name: Line3-Response2
   m_EditorClassIdentifier: 
-  optionEnabled: 0
-  optionText: 
+  optionEnabled: 1
+  optionText: Not interested
   responseToOption: {fileID: 0}
-  optionOutcome: 0
-  questToStart: {fileID: 0}
-  itemToGive: {fileID: 0}
+  optionOutcome: 1
