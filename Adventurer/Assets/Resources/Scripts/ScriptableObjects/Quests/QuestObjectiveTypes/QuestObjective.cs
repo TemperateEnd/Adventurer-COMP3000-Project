@@ -8,14 +8,4 @@ public class QuestObjective : ScriptableObject
     public int progressTowardsObj;
     public int objGoalNumber;
     public QuestObjective nextObjective;
-    public DialogueOption optionToUnlock;
-
-    public bool evaluateObjectiveComplete()
-    {
-        if(progressTowardsObj == objGoalNumber)
-            return true;
-        
-        else
-            return false;
-    }
 }

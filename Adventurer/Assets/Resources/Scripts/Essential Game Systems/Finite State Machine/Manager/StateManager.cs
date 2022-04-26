@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; //This will be useful as the FSM will be working with the in-game UI elements (i.e. menus, HUD, etc)
 
-public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Inventory, CharacterDetails, Dialogue, Barter, Quit }
+public enum GameState { Default, MainMenu, CharacterCreation, Play, Pause, Inventory, CharacterDetails, Dialogue, Barter, QuestLog, Quit }
 public class StateManager : MonoBehaviour
 {
     public GameObject playerObj;
@@ -23,6 +23,7 @@ public class StateManager : MonoBehaviour
     public GameObject playerUI;
     public GameObject inventoryUI;
     public GameObject barteringUI;
+    public GameObject questUI;
     public GameObject currentNPC;
     [Space(10)]
     [Header("PlayState elements - Bartering")]
@@ -36,6 +37,7 @@ public class StateManager : MonoBehaviour
     [Header("PlayState elements - Other Menus")]
     public bool toggleInventory;
     public bool toggleCharDetails;
+    public bool toggleQuestLog;
     [Space(10)]  
     public Canvas uiCanvas;
     public GameObject mainCam;
@@ -173,6 +175,12 @@ public class StateManager : MonoBehaviour
                 {
                     playerObj.GetComponentInChildren<attackScript>().enabled = true;
                 }
+                
+                if(Input.GetKeyDown(KeyCode.J))
+                {
+                    toggleQuestLog = true;
+                    gameState = GameState.QuestLog;
+                }
 
                 break;
 
@@ -217,6 +225,17 @@ public class StateManager : MonoBehaviour
                     barteringUI.SetActive(false);
                     gameState = GameState.Dialogue;
                 }
+                break;
+
+            case GameState.QuestLog:
+                questUI.SetActive(true);
+                PauseGame();
+
+                if(!toggleQuestLog)
+                {
+                    questUI.SetActive(false);
+                    gameState = GameState.Play;
+                } 
                 break;
             default:
                 break;

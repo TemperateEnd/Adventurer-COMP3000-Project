@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9eb691867f6e2a4582b686c2783c607, type: 3}
-  m_Name: TestQuest1Obj
+  m_Name: TestQuest1Objective1
   m_EditorClassIdentifier: 
-  objectiveText: Give a potion to Reece
+  objectiveText: Get a Health Potion
   objectiveComplete: 0
   progressTowardsObj: 0
   objGoalNumber: 1
-  nextObjective: {fileID: 0}
-  optionToUnlock: {fileID: 0}
+  nextObjective: {fileID: 11400000, guid: 36daa9f1439024d42af7bf5c5401da15, type: 2}
   itemToDeliver: {fileID: 11400000, guid: b5235e272efd98f4fba131ce56fd81a7, type: 2}

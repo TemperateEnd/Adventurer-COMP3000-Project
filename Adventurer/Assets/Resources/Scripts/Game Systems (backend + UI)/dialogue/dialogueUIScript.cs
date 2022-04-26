@@ -53,8 +53,20 @@ public class dialogueUIScript : MonoBehaviour
             if(optionSelected.questToStart)
             {
                 EventManager.TriggerEvent("StartQuest", optionSelected.questToStart); //if option starts quest, start quest
+                ChangeLine(optionSelected.responseToOption);
             }
-            ChangeLine(optionSelected.responseToOption);
+
+            if(optionSelected.itemToGive)
+            {
+                this.gameObject.GetComponentInParent<inventoryScript>().RemoveItemFromInventory(optionSelected.itemToGive);
+                ChangeLine(optionSelected.responseToOption);
+            }
+
+            else
+            {
+                ChangeLine(optionSelected.responseToOption);
+            }
+            
         }
 
         else if (optionSelected.optionOutcome == optionType.BARTER)
@@ -67,6 +79,8 @@ public class dialogueUIScript : MonoBehaviour
         {
             Debug.Log("Enemy should be hostile");
         }
+
+        EventManager.TriggerEvent("NPCSpokenTo", optionSelected);
     }
 
     public void ChangeLine(DialogueLine nextLine)

@@ -29,6 +29,14 @@ public class dialogueButtonScript : MonoBehaviour
     public void OptionSelected()
     {
         Debug.Log(this.gameObject.name + " has been selected");
-        this.gameObject.GetComponentInParent<dialogueUIScript>().DialogueOptionSelected(optionRepresented);
+        if(optionRepresented.GetType() != typeof(DialogueOption))
+        {
+            this.gameObject.GetComponentInParent<dialogueUIScript>().DialogueOptionSelected((DialogueOption)optionRepresented);
+        }
+
+        else
+        {
+            this.gameObject.GetComponentInParent<dialogueUIScript>().DialogueOptionSelected(optionRepresented);
+        }
     }
 }

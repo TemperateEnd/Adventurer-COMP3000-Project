@@ -4,32 +4,57 @@ using UnityEngine;
 
 public class questLogBackend : MonoBehaviour
 {
-    private questLogBackend questLog;
-    public static questLogBackend questLogInstance;
     public List<Quest> acceptedQuests;
+    public Quest currentlySelectedQuest;
+    public questLogUI uiScript;
 
-    public static void addQuestToList(Quest questToAdd)
+    void Start() 
     {
-        questLogInstance.acceptedQuests.Add(questToAdd);
+        uiScript.questLog = this;
+    }
+
+    public void addQuestToList(Quest questToAdd)
+    {
+        acceptedQuests.Add(questToAdd);
+
+        if(questToAdd.currentObjective.GetType() == typeof(ContactQuestObjective))
+            EventManager.TriggerEvent("ContactObjectiveStart", questToAdd.currentObjective);
+        else if(questToAdd.currentObjective.GetType() == typeof(DeliverQuestObjective))
+            EventManager.TriggerEvent("DeliverObjectiveStart", questToAdd.currentObjective);
+        else if(questToAdd.currentObjective.GetType() == typeof(KillQuestObjective))
+            EventManager.TriggerEvent("KillObjectiveStart", questToAdd.currentObjective);
+
     }
 
     public void updateQuestProgress(Quest questToUpdate)
     {
         questToUpdate.currentObjective.progressTowardsObj++; //for example, kill 1 wolf, progressTowardsObj should equal 1
-        questToUpdate.currentObjective.evaluateObjectiveComplete(); //checks if you met the requirements, before returning whether you have (i.e. progressTowardsObj = 1 where ObjGoalNumber = 2
-                                                                    //would return false, whereas both progress and goal numbers would return true if matching)
-        if(questToUpdate.currentObjective.evaluateObjectiveComplete()) { //if true, consider quest complete, reward player, and remove quest from list
+        if(questToUpdate.currentObjective.progressTowardsObj == questToUpdate.currentObjective.objGoalNumber) //if progress int = goal number, then move onto next objective IF next objective isn't null
+        {
             questToUpdate.progressQuest();
             if(questToUpdate.currentObjective.nextObjective = null)
             {
                 acceptedQuests.Remove(questToUpdate);
             }
+
+            else
+            {
+                
+                if(questToUpdate.currentObjective.GetType() == typeof(ContactQuestObjective))
+                    EventManager.TriggerEvent("ContactObjectiveStart", questToUpdate.currentObjective.nextObjective);
+
+                else if (questToUpdate.currentObjective.GetType() == typeof(DeliverQuestObjective))
+                    EventManager.TriggerEvent("DeliverObjectiveStart", questToUpdate.currentObjective.nextObjective);
+
+                else if (questToUpdate.currentObjective.GetType() == typeof(KillQuestObjective))
+                        EventManager.TriggerEvent("KillObjectiveStart", questToUpdate.currentObjective.nextObjective);
+            }
         }
     }
 
-    public static void questProgressTracking(object questData)
+    public void questProgressTracking(object questData)
     {
-        foreach(Quest acceptedQuest in questLogInstance.acceptedQuests)
+        foreach(Quest acceptedQuest in acceptedQuests)
         {
             if(acceptedQuest.currentObjective.GetType() == typeof(KillQuestObjective))
             {
@@ -37,7 +62,7 @@ public class questLogBackend : MonoBehaviour
                 KillQuestObjective objectiveToCheck = (KillQuestObjective)acceptedQuest.currentObjective;
                 if(objectiveToCheck.npcToKill == nameOfRecentNPC)
                 {
-                    questLogInstance.updateQuestProgress(acceptedQuest);
+                    updateQuestProgress(acceptedQuest);
                 }
             }
 
@@ -47,7 +72,7 @@ public class questLogBackend : MonoBehaviour
                 DeliverQuestObjective objectiveToCheck = (DeliverQuestObjective)acceptedQuest.currentObjective;
                 if(objectiveToCheck.itemToDeliver == itemObtained)
                 {
-                    questLogInstance.updateQuestProgress(acceptedQuest);
+                    updateQuestProgress(acceptedQuest);
                 }
             }
 
@@ -57,7 +82,7 @@ public class questLogBackend : MonoBehaviour
                 ContactQuestObjective objectiveToCheck = (ContactQuestObjective)acceptedQuest.currentObjective;
                 if(objectiveToCheck.optionToSelect == selectedOption)
                 {
-                    questLogInstance.updateQuestProgress(acceptedQuest);
+                    updateQuestProgress(acceptedQuest);
                 }
             }
         }

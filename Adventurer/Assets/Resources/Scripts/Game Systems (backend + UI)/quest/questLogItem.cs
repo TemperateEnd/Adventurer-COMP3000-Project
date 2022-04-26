@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class questLogItem : MonoBehaviour
 {
     public TextMeshProUGUI questText;
     public Quest questListed;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        questText = this.gameObject.GetComponent<TextMeshProUGUI>();    
-    }
 
     // Update is called once per frame
     void Update()
@@ -35,6 +31,6 @@ public class questLogItem : MonoBehaviour
 
     public void SelectQuest()
     {
-        this.gameObject.GetComponentInParent<questLogUI>().selectedQuest = questListed;
+        this.gameObject.GetComponentInParent<questLogUI>().questLog.currentlySelectedQuest = questListed;
     }
 }

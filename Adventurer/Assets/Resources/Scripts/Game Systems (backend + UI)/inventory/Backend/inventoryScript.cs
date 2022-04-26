@@ -45,6 +45,7 @@ public class inventoryScript : MonoBehaviour
     {
         inventoryItemsList.Add(itemToAdd);
         uiScript.DisplayItemInList(itemToAdd);
+        EventManager.TriggerEvent("ItemPickedUp", itemToAdd);
     }
 
     public void RemoveItemFromInventory(Item itemToRemove)

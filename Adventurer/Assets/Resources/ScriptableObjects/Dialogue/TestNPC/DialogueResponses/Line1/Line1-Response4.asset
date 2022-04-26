@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2d0ae25e5c11844916884edac8b867, type: 3}
+  m_Script: {fileID: 11500000, guid: 04132448c830b1041869bf7dda2e5677, type: 3}
   m_Name: Line1-Response4
   m_EditorClassIdentifier: 
   optionEnabled: 0
   optionText: I have your potion
-  responseToOption: {fileID: 0}
+  responseToOption: {fileID: 11400000, guid: ddadd8025abcd9041935e6d0cf6aa891, type: 2}
   optionOutcome: 0
   questToStart: {fileID: 0}
-  itemToGive: {fileID: 0}
+  itemToGive: {fileID: 11400000, guid: b5235e272efd98f4fba131ce56fd81a7, type: 2}
