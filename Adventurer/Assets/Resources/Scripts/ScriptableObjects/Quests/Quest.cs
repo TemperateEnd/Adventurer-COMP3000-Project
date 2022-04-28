@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Quest", menuName = "Adventurer/Quest/Quest", order = 0)]
 public class Quest : ScriptableObject 
 {
-    public DialogueOption questInitOption;
+    public DialogueOption initDialogue;
     public string questName;
     public QuestObjective currentObjective;
     public QuestReward reward;
@@ -16,21 +16,15 @@ public class Quest : ScriptableObject
     // Update is called once per frame
     public void progressQuest()
     {
-        currentObjective.objectiveComplete = true;
-        if(currentObjective.nextObjective)
-        {
-            currentObjective = currentObjective.nextObjective; //takes next objective after current objective and makes it current objective
-        }
-
-        else if (currentObjective.nextObjective = null)
-        {
-            GameObject.Find("StateManager").GetComponent<inventoryScript>().AddGold(reward.goldEarned);
-
+        currentObjective = currentObjective.nextObjective; //takes next objective after current objective and makes it current objective
+        Debug.Log("Quest is on next objective");
+    }
+    public void giveReward()
+    {
+        GameObject.Find("StateManager").GetComponent<inventoryScript>().AddGold(reward.goldEarned);
             if(reward.itemsEarned.Count >= 1){
                 foreach(Item rewardEarned in reward.itemsEarned)
                 GameObject.Find("StateManager").GetComponent<inventoryScript>().AddItemToInventory(rewardEarned);
             }
-        }
     }
-
 }

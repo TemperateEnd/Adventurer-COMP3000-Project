@@ -73,20 +73,20 @@ public class EventListener : MonoBehaviour
     {
         Item collectedItem = (Item)data;
         questLogBackend questLog = GameObject.Find("StateManager").GetComponent<questLogBackend>();
-        questLog.questProgressTracking(collectedItem);
+        questLog.DeliverQuestObjectiveProgressCheck(collectedItem);
     }
 
     private void NPCKilled(object data)
     {
         string npcName = (string) data;
         questLogBackend questLog = GameObject.Find("StateManager").GetComponent<questLogBackend>();
-        questLog.questProgressTracking(npcName);
+        questLog.KillQuestObjectiveProgressCheck(npcName);
     }
 
     private void NPCSpokenTo(object data)
     {
         DialogueOption selectedOption = (DialogueOption)data;
         questLogBackend questLog = GameObject.Find("StateManager").GetComponent<questLogBackend>();
-        questLog.questProgressTracking(selectedOption);
+        questLog.ContactQuestObjectiveProgressCheck(selectedOption);
     }
 }

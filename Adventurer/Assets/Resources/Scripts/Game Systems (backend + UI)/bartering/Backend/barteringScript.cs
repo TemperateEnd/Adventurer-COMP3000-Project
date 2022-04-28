@@ -27,6 +27,7 @@ public class barteringScript : MonoBehaviour
 
     public void BuyItem(Item itemToBuy)
     {
+        Debug.Log(itemToBuy.itemName + " bought for " + itemToBuy.itemValue);
         this.gameObject.GetComponent<inventoryScript>().AddItemToInventory(itemToBuy);
         this.gameObject.GetComponent<inventoryScript>().SubtractGold(itemToBuy.itemValue);
         this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().barteringGold += itemToBuy.itemValue;

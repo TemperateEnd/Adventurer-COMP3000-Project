@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e858b58101705347ab3cae168f3a409, type: 3}
   m_Name: TestQuest1
   m_EditorClassIdentifier: 
-  questInitOption: {fileID: 0}
+  initDialogue: {fileID: 11400000, guid: 47f996ed006332449b99676117f7bb13, type: 2}
   questName: Give a potion to Reece
   currentObjective: {fileID: 11400000, guid: 22d37c9db1e32224ba173a4384d99509, type: 2}
   reward: {fileID: 11400000, guid: 6c0688eb0d1285845a24c697d83ebfff, type: 2}

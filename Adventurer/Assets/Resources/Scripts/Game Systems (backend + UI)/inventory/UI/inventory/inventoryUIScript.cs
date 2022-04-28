@@ -30,7 +30,7 @@ public class inventoryUIScript : MonoBehaviour
 
     void OnEnable() {
 
-        if(prefabArray.Count > 0) //if inventory has been opened previously, reset the UI to prevent duplication
+        if(prefabArray.Count >= 1) //if inventory has been opened previously, reset the UI to prevent duplication
         {
             ResetUI();
         }

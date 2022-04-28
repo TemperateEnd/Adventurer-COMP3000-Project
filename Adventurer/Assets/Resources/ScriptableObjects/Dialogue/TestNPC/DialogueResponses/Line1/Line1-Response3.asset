@@ -17,4 +17,4 @@ MonoBehaviour:
   responseToOption: {fileID: 11400000, guid: 2dc3cbc529bf10d4bb61eeae80d3ea6c, type: 2}
   optionOutcome: 0
   questToStart: {fileID: 0}
-  conditionsRequired: []
+  itemToGive: {fileID: 0}
