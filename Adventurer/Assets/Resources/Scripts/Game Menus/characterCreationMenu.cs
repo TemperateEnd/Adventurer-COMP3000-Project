@@ -20,6 +20,7 @@ public class characterCreationMenu : MonoBehaviour
     [Header("UI")]
     public GameObject characterNameField;
     [Header("TextMeshPro")]
+    public TextMeshProUGUI characterClassChoiceText;
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI strengthText;
     public TextMeshProUGUI intelligenceText;
@@ -47,6 +48,9 @@ public class characterCreationMenu : MonoBehaviour
     {
         tempCharacterName = characterNameField.GetComponent<TMP_InputField>().text;
 
+        if(chosenClass)
+            characterClassChoiceText.SetText("Chosen class: " + chosenClass.className);
+
         strengthText.SetText("Strength: " + tempStrength);
         intelligenceText.SetText("Intelligence: " + tempIntelligence);
         charismaText.SetText("Charisma: " + tempCharisma);
@@ -56,7 +60,7 @@ public class characterCreationMenu : MonoBehaviour
 
         pointsText.SetText("Available Points: " + availablePoints);
 
-        if(availablePoints <= 0)
+        if(availablePoints == 0)
         {
             addStatStrength.GetComponent<Button>().interactable = false;
             addStatIntelligence.GetComponent<Button>().interactable = false;
@@ -83,67 +87,67 @@ public class characterCreationMenu : MonoBehaviour
         switch(statToDecrement)
         {
             case "Strength":
-                if(tempStrength > 0)
+                if(tempStrength > 5)
                 {
                     tempStrength--;
                 }
 
-                else if (tempStrength == 0)
+                else if (tempStrength == 5)
                 {
                     subtractStatStrength.GetComponent<Button>().interactable = false;
                 }
                 break;
             case "Intelligence":
-                if(tempIntelligence > 0)
+                if(tempIntelligence > 5)
                 {
                     tempIntelligence--;
                 }
 
-                else if (tempIntelligence == 0)
+                else if (tempIntelligence == 5)
                 {
                     subtractStatIntelligence.GetComponent<Button>().interactable = false;
                 }
                 break;
             case "Charisma":
-                if(tempCharisma > 0)
+                if(tempCharisma > 5)
                 {
                     tempCharisma--;
                 }
 
-                else if (tempCharisma == 0)
+                else if (tempCharisma == 5)
                 {
                     subtractStatCharisma.GetComponent<Button>().interactable = false;
                 }
                 break;
             case "Endurance":
-                if(tempEndurance > 0)
+                if(tempEndurance > 5)
                 {
                     tempEndurance--;
                 }
 
-                else if (tempEndurance == 0)
+                else if (tempEndurance == 5)
                 {
                     subtractStatEndurance.GetComponent<Button>().interactable = false;
                 }
                 break;
             case "Wisdom":
-                if(tempWisdom > 0)
+                if(tempWisdom > 5)
                 {
                     tempWisdom--;
                 }
 
-                else if (tempWisdom == 0)
+                else if (tempWisdom == 5)
                 {
                     subtractStatWisdom.GetComponent<Button>().interactable = false;
                 }
                 break;
             case "Dexterity":
-                if(tempDexterity > 0)
+                if(tempDexterity > 5)
                 {
                     tempDexterity--;
                 }
 
-                else if (tempDexterity == 0)
+                else if (tempDexterity == 5)
                 {
                     subtractStatDexterity.GetComponent<Button>().interactable = false;
                 }
@@ -160,7 +164,7 @@ public class characterCreationMenu : MonoBehaviour
             {
                 case "Strength":
                     tempStrength++;
-                    if(tempStrength > 0)
+                    if(tempStrength > 5)
                     {
                         subtractStatStrength.GetComponent<Button>().interactable = true;
                     }
@@ -168,7 +172,7 @@ public class characterCreationMenu : MonoBehaviour
                 case "Intelligence":
                     tempIntelligence++;
 
-                    if(tempIntelligence > 0)
+                    if(tempIntelligence > 5)
                     {
                         subtractStatIntelligence.GetComponent<Button>().interactable = true;
                     }
@@ -176,7 +180,7 @@ public class characterCreationMenu : MonoBehaviour
                 case "Charisma":
                     tempCharisma++;
 
-                    if(tempCharisma > 0)
+                    if(tempCharisma > 5)
                     {
                         subtractStatCharisma.GetComponent<Button>().interactable = true;
                     }
@@ -184,7 +188,7 @@ public class characterCreationMenu : MonoBehaviour
                 case "Endurance":
                     tempEndurance++;
 
-                    if(tempEndurance > 0)
+                    if(tempEndurance > 5)
                     {
                         subtractStatEndurance.GetComponent<Button>().interactable = true;
                     }
@@ -192,7 +196,7 @@ public class characterCreationMenu : MonoBehaviour
                 case "Wisdom":
                     tempWisdom++;
 
-                    if(tempWisdom > 0)
+                    if(tempWisdom > 5)
                     {
                         subtractStatWisdom.GetComponent<Button>().interactable = true;
                     }
@@ -200,7 +204,7 @@ public class characterCreationMenu : MonoBehaviour
                 case "Dexterity":
                     tempDexterity++;
 
-                    if(tempDexterity > 0)
+                    if(tempDexterity > 5)
                     {
                         subtractStatDexterity.GetComponent<Button>().interactable = true;
                     }
