@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d5997e7ee598d4aab78c7544b7669b, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 5ad2a3847d5d0c04b9b5863c50a5b1fc, type: 3}
+  m_Name: TestNPCTree2
   m_EditorClassIdentifier: 
-  skillName: Sword
-  skillLevel: 0
-  skillXP: 0
+  npcName: Guard Captain
+  rootDialogue: {fileID: 11400000, guid: 3a89a9e25027b6947a738faae32e91b8, type: 2}

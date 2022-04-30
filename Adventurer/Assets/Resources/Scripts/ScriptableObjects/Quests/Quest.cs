@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Quest", menuName = "Adventurer/Quest/Quest", order = 0)]
 public class Quest : ScriptableObject 
 {
-    public DialogueOption initDialogue;
+    public List<DialogueOption> initDialogue;
     public string questName;
     public QuestObjective currentObjective;
     public QuestReward reward;

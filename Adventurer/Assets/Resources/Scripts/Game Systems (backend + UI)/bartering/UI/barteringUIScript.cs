@@ -65,7 +65,7 @@ public class barteringUIScript : MonoBehaviour
             else if(barteringBackEnd.selectedItemFromNPC.GetType() == typeof(Potion))
             {
                 Potion selectedPotion = (Potion)barteringBackEnd.selectedItemFromNPC;
-                itemStatInfo.SetText(selectedPotion.restoreAmount + selectedPotion.statToRestore.ToString());
+                itemStatInfo.SetText("Replenishes " + selectedPotion.restoreAmount + " " + selectedPotion.statToRestore.ToString());
             }
 
             else if(barteringBackEnd.selectedItemFromNPC.GetType() == typeof(Food))
@@ -103,7 +103,7 @@ public class barteringUIScript : MonoBehaviour
             else if(barteringBackEnd.selectedItemFromPlayer.GetType() == typeof(Potion))
             {
                 Potion selectedPotion = (Potion)barteringBackEnd.selectedItemFromPlayer;
-                itemStatInfo.SetText(selectedPotion.restoreAmount + selectedPotion.statToRestore.ToString());
+                itemStatInfo.SetText("Replenishes " + selectedPotion.restoreAmount + " " + selectedPotion.statToRestore.ToString());
             }
 
             else if(barteringBackEnd.selectedItemFromPlayer.GetType() == typeof(Food))

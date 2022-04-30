@@ -11,7 +11,12 @@ public class questLogBackend : MonoBehaviour
     public void addQuestToList(Quest questToAdd)
     {
         acceptedQuests.Add(questToAdd);
-        questToAdd.initDialogue.optionEnabled = false;
+
+        foreach(DialogueOption option in questToAdd.initDialogue)
+        {
+            option.optionEnabled = false; //disables every option in the initDialogue list
+        }
+
 
         if(questToAdd.currentObjective.GetType() == typeof(ContactQuestObjective))
             EventManager.TriggerEvent("ContactObjectiveStart", questToAdd.currentObjective);

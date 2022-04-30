@@ -27,9 +27,8 @@ public class barteringScript : MonoBehaviour
 
     public void BuyItem(Item itemToBuy)
     {
-        Debug.Log(itemToBuy.itemName + " bought for " + itemToBuy.itemValue);
         this.gameObject.GetComponent<inventoryScript>().AddItemToInventory(itemToBuy);
-        this.gameObject.GetComponent<inventoryScript>().SubtractGold(itemToBuy.itemValue);
+        this.gameObject.GetComponent<inventoryScript>().SubtractGold((itemToBuy.itemValue));
         this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().barteringGold += itemToBuy.itemValue;
         this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().barteringItems.Remove(itemToBuy);
         uiScript.DisplayItem(itemToBuy, uiScript.playerItemsSection, uiScript.playerPrefabArray);
@@ -41,7 +40,7 @@ public class barteringScript : MonoBehaviour
     public void SellItem(Item itemToSell)
     {
         this.gameObject.GetComponent<inventoryScript>().RemoveItemFromInventory(itemToSell);
-        this.gameObject.GetComponent<inventoryScript>().AddGold(itemToSell.itemValue);
+        this.gameObject.GetComponent<inventoryScript>().AddGold((itemToSell.itemValue));
         this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().barteringGold -= itemToSell.itemValue;
         this.gameObject.GetComponent<StateManager>().currentNPC.GetComponent<npcScript>().AddItemToList(itemToSell);
         uiScript.DisplayItem(itemToSell, uiScript.npcItemsSection, uiScript.npcPrefabArray);

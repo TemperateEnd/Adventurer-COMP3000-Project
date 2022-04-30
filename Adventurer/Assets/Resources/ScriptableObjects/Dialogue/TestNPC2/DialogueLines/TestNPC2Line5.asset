@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ac5466a667a1e04d835da41060ed957, type: 3}
-  m_Name: TestNPCLIne3
+  m_Name: TestNPC2Line5
   m_EditorClassIdentifier: 
-  dialogueText: I need a Health Potion for my cough, can you get one for me?
+  dialogueText: Good on you. Now, show me what you got. Hit that training dummy
   availableOptions:
-  - {fileID: 11400000, guid: 6f4c68d75a7d4404a8276502b0b8ad29, type: 2}
-  - {fileID: 11400000, guid: 6026f11cb5bd2bf46b82488dec97b73f, type: 2}
-  - {fileID: 11400000, guid: 547b6fb5e8fcef0478cdff6ae40f7de6, type: 2}
+  - {fileID: 11400000, guid: 1be011b282d9e0943bd80067870da5b7, type: 2}

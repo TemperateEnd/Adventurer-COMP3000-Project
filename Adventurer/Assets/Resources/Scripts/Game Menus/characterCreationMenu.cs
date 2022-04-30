@@ -79,6 +79,36 @@ public class characterCreationMenu : MonoBehaviour
             addStatWisdom.GetComponent<Button>().interactable = true;
             addStatDexterity.GetComponent<Button>().interactable = true;
         }
+
+        if (tempStrength == 5)
+        {
+            subtractStatStrength.GetComponent<Button>().interactable = false;
+        }
+
+        if (tempIntelligence == 5)
+        {
+            subtractStatIntelligence.GetComponent<Button>().interactable = false;
+        }
+
+        if (tempCharisma == 5)
+        {
+            subtractStatCharisma.GetComponent<Button>().interactable = false;
+        }
+
+        if (tempEndurance == 5)
+        {
+            subtractStatEndurance.GetComponent<Button>().interactable = false;
+        }
+
+        if (tempWisdom == 5)
+        {
+            subtractStatWisdom.GetComponent<Button>().interactable = false;
+        }
+
+        if (tempDexterity == 5)
+        {
+            subtractStatDexterity.GetComponent<Button>().interactable = false;
+        }
     }
 
     //Decrement stat on button press
@@ -90,70 +120,46 @@ public class characterCreationMenu : MonoBehaviour
                 if(tempStrength > 5)
                 {
                     tempStrength--;
-                }
-
-                else if (tempStrength == 5)
-                {
-                    subtractStatStrength.GetComponent<Button>().interactable = false;
+                    availablePoints++;
                 }
                 break;
             case "Intelligence":
                 if(tempIntelligence > 5)
                 {
                     tempIntelligence--;
-                }
-
-                else if (tempIntelligence == 5)
-                {
-                    subtractStatIntelligence.GetComponent<Button>().interactable = false;
+                    availablePoints++;
                 }
                 break;
             case "Charisma":
                 if(tempCharisma > 5)
                 {
                     tempCharisma--;
-                }
-
-                else if (tempCharisma == 5)
-                {
-                    subtractStatCharisma.GetComponent<Button>().interactable = false;
+                    availablePoints++;
                 }
                 break;
             case "Endurance":
                 if(tempEndurance > 5)
                 {
                     tempEndurance--;
-                }
-
-                else if (tempEndurance == 5)
-                {
-                    subtractStatEndurance.GetComponent<Button>().interactable = false;
+                    availablePoints++;
                 }
                 break;
             case "Wisdom":
                 if(tempWisdom > 5)
                 {
                     tempWisdom--;
-                }
-
-                else if (tempWisdom == 5)
-                {
-                    subtractStatWisdom.GetComponent<Button>().interactable = false;
+                    availablePoints++;
                 }
                 break;
             case "Dexterity":
                 if(tempDexterity > 5)
                 {
                     tempDexterity--;
-                }
-
-                else if (tempDexterity == 5)
-                {
-                    subtractStatDexterity.GetComponent<Button>().interactable = false;
+                    availablePoints++;
                 }
                 break;
         }
-        availablePoints++;
+        
     }
 
     public void IncreaseStat(string statToIncrement)

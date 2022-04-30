@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class npcScript : MonoBehaviour
 {
+    public string npcName;
     [Header("NPC - Primary stats")]
     public int npcStrength;
     public int npcIntelligence;
@@ -54,6 +55,7 @@ public class npcScript : MonoBehaviour
 
         if(currHP <= 0)
         {
+            EventManager.TriggerEvent("NPCKilled", npcName);
             Destroy(this.gameObject);
         }
     }

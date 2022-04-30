@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04132448c830b1041869bf7dda2e5677, type: 3}
+  m_Name: Line1-Response1
+  m_EditorClassIdentifier: 
+  optionEnabled: 1
+  optionText: To do what?
+  responseToOption: {fileID: 11400000, guid: ae9a26b17b50fd14983aa2b3d2040761, type: 2}
+  optionOutcome: 0
+  questToStart: {fileID: 0}
+  itemToGive: {fileID: 0}
