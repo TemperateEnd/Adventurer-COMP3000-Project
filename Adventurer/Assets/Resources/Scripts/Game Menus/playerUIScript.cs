@@ -8,6 +8,7 @@ public class playerUIScript : MonoBehaviour
     public GameObject player;
     public Slider healthBar;
     public Slider staminaBar;
+    public GameObject dialoguePromptUI;
 
     void OnEnable() {
         player = this.gameObject.GetComponentInParent<StateManager>().playerObj;
@@ -21,5 +22,15 @@ public class playerUIScript : MonoBehaviour
 
         staminaBar.value = player.GetComponent<playerAttributes>().currStamina;
         healthBar.value = player.GetComponent<playerAttributes>().currHealth;
+
+        if(StateManager.InstanceRef.withinDialogueRange)
+        {
+            dialoguePromptUI.SetActive(true);
+        }
+
+        else if (!StateManager.InstanceRef.withinDialogueRange)
+        {
+            dialoguePromptUI.SetActive(false);
+        }
     }
 }
