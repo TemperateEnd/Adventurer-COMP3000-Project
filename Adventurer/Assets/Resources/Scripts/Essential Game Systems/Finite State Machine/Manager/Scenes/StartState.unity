@@ -303,7 +303,7 @@ MonoBehaviour:
   player: {fileID: 0}
   healthBar: {fileID: 1990116757}
   staminaBar: {fileID: 2055768890}
-  dialoguePromptUI: {fileID: 0}
+  dialoguePromptUI: {fileID: 854196198}
 --- !u!1 &40381601
 GameObject:
   m_ObjectHideFlags: 0
