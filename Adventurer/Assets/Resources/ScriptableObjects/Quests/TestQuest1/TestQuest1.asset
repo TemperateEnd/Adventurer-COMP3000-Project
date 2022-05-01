@@ -15,5 +15,5 @@ MonoBehaviour:
   initDialogue:
   - {fileID: 11400000, guid: 6f4c68d75a7d4404a8276502b0b8ad29, type: 2}
   questName: Give a potion to Reece
-  currentObjective: {fileID: 11400000, guid: 36daa9f1439024d42af7bf5c5401da15, type: 2}
+  currentObjective: {fileID: 11400000, guid: 22d37c9db1e32224ba173a4384d99509, type: 2}
   reward: {fileID: 11400000, guid: 6c0688eb0d1285845a24c697d83ebfff, type: 2}

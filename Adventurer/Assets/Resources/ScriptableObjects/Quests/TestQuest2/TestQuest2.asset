@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 85c5134e6ba6c224498a8c696d30ca49, type: 2}
   - {fileID: 11400000, guid: dbe88b4b18b31e1498c2bdc3d7ea1dfa, type: 2}
   questName: Guard Tryouts
-  currentObjective: {fileID: 11400000, guid: 26644468f19a78145973ac4204bc7c4e, type: 2}
+  currentObjective: {fileID: 11400000, guid: beeabc71af0ad754091fec0121e69ea7, type: 2}
   reward: {fileID: 11400000, guid: 2d3321d9f1e170e4583cd5c802444e89, type: 2}
