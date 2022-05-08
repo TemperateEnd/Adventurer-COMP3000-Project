@@ -1,5 +1,5 @@
 # Adventurer-COMP3000-Project
-Adventurer is a 3D first-person RPG with a focus on character progression. This is the project I will be working on for COMP3000
+Adventurer is a 3D first-person RPG with a focus on character progression. This is the project I will be working on for COMP3000. Paul Watson is serving as my Project Supervisor.
 
 Proposed MoSCoW Analysis (this could change futher down the line):
 
