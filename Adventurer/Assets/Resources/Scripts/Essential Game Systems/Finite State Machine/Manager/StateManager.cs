@@ -65,7 +65,7 @@ public class StateManager : MonoBehaviour
     {
         mainCam = GameObject.FindWithTag("MainCamera"); 
 
-        if(instanceRef = null)
+        if(instanceRef != null)
         {
             DestroyImmediate(gameObject);
         }

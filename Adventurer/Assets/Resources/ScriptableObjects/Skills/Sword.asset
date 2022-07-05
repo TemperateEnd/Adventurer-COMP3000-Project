@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   skillName: Sword
-  skillLevel: 0
-  skillXP: 0
+  skillLevel: 1
+  skillXP: 50
